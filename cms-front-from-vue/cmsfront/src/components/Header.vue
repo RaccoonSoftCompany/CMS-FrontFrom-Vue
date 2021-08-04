@@ -437,7 +437,7 @@ export default {
       // 注册用户rules
       registerformrules: {
         username: [
-          { required: true, message: "请输入用户名", trigger: "change" },
+          { required: true, message: "请输入用户名", trigger: "blur" },
         ],
         password: [{ required: true, message: "请输入密码", trigger: "blur" }],
         repassword: [

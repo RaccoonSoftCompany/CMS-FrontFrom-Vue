@@ -9,39 +9,47 @@
           </div>
           <section class="main">
             <article>
-              <el-card style="background-color: #ffffff">
+              <el-card class="outcard">
                 <div class="context">
                   <router-view></router-view>
                 </div>
               </el-card>
             </article>
             <aside>
-              <el-card class="rightSide">
-                <h3>48小时阅读排行</h3>
-                <span class="text1">1.xxxxxxxxxxxxxx</span><br />
-                <span class="text1">2.xxxxxxxxxxxxxx</span><br />
-                <span class="text1">3.xxxxxxxxxxxxxx</span><br />
-                <span class="text1">4.xxxxxxxxxxxxxx</span><br />
-                <span class="text1">5.xxxxxxxxxxxxxx</span>
-                <hr />
-              </el-card>
-              <el-card class="rightSide">
-                <h3>10天编辑推荐更多</h3>
-                <span class="text1">1.xxxxxxxxxxxxxx</span><br />
-                <span class="text1">2.xxxxxxxxxxxxxx</span><br />
-                <span class="text1">3.xxxxxxxxxxxxxx</span><br />
-                <span class="text1">4.xxxxxxxxxxxxxx</span><br />
-                <span class="text1">5.xxxxxxxxxxxxxx</span>
-                <hr />
-              </el-card>
-              <el-card class="rightSide">
-                <h3>10天评论排行</h3>
-                <span class="text1">1.xxxxxxxxxxxxxx</span><br />
-                <span class="text1">2.xxxxxxxxxxxxxx</span><br />
-                <span class="text1">3.xxxxxxxxxxxxxx</span><br />
-                <span class="text1">4.xxxxxxxxxxxxxx</span><br />
-                <span class="text1">5.xxxxxxxxxxxxxx</span>
-                <hr />
+              <el-card class="asidecard">
+                <div class="block">
+                  <el-carousel height="150px">
+                    <el-carousel-item v-for="item in imgUrls" :key="item.id">
+                      <h3 class="small">
+                        <img :src="item.idView" alt="" />
+                      </h3>
+                    </el-carousel-item>
+                  </el-carousel>
+                </div>
+                <el-card class="rightSide">
+                  <h3>48小时阅读排行</h3>
+                  <span class="text1">1.xxxxxxxxxxxxxx</span><br />
+                  <span class="text1">2.xxxxxxxxxxxxxx</span><br />
+                  <span class="text1">3.xxxxxxxxxxxxxx</span><br />
+                  <span class="text1">4.xxxxxxxxxxxxxx</span><br />
+                  <span class="text1">5.xxxxxxxxxxxxxx</span>
+                </el-card>
+                <el-card class="rightSide">
+                  <h3>10天编辑推荐更多</h3>
+                  <span class="text1">1.xxxxxxxxxxxxxx</span><br />
+                  <span class="text1">2.xxxxxxxxxxxxxx</span><br />
+                  <span class="text1">3.xxxxxxxxxxxxxx</span><br />
+                  <span class="text1">4.xxxxxxxxxxxxxx</span><br />
+                  <span class="text1">5.xxxxxxxxxxxxxx</span>
+                </el-card>
+                <el-card class="rightSide">
+                  <h3>10天评论排行</h3>
+                  <span class="text1">1.xxxxxxxxxxxxxx</span><br />
+                  <span class="text1">2.xxxxxxxxxxxxxx</span><br />
+                  <span class="text1">3.xxxxxxxxxxxxxx</span><br />
+                  <span class="text1">4.xxxxxxxxxxxxxx</span><br />
+                  <span class="text1">5.xxxxxxxxxxxxxx</span>
+                </el-card>
               </el-card>
             </aside>
             <el-backtop>
@@ -55,8 +63,7 @@
 
         <el-footer>
           Copyright © 2021 - 2021 Raccoon. All Rights Reserved.
-          </el-footer
-        >
+        </el-footer>
       </div>
     </el-container>
   </el-container>
@@ -76,11 +83,32 @@ export default {
   data() {
     return {
       list: [],
+      imgUrls: [
+        { id: 0, idView: require("./img/csdn.png") },
+        { id: 1, idView: require("./img/csdn2.jpg") },
+      ],
     };
   },
-  computed:{
-
-  }
+  methods: {
+    // imgLoad() {
+    //   this.$nextTick(() => {
+    //     this.bannerHeight = this.$refs.bannerHeight[0].height;
+    //     console.log((this.bannerHeight = this.$refs.bannerHeight[0].height));
+    //   });
+    // },
+  },
+  computed: {},
+  // mounted() {
+  //   this.imgLoad();
+  //   window.addEventListener(
+  //     "resize",
+  //     () => {
+  //       this.bannerHeight = this.$refs.bannerHeight[0];
+  //       this.imgLoad();
+  //     },
+  //     false
+  //   );
+  // },
 };
 </script>
 
@@ -106,7 +134,7 @@ body {
   text-transform: none;
   background-color: #ffffff;
   box-shadow: 5px -2px 5px rgb(221, 220, 220);
-  color: #BBBBBB;
+  color: #bbbbbb;
   text-align: center;
   line-height: 60px;
   /* height: 100%; */
@@ -123,6 +151,9 @@ body {
 }
 body > .el-container {
   margin-bottom: 40px;
+}
+.el-card__body {
+  padding: 5px !important;
 }
 .el-carousel__item h3 {
   color: #475669;
@@ -211,6 +242,7 @@ a {
 }
 .main > article {
   /* margin: 0 auto; */
+
   float: left;
   width: 100%;
   overflow: hidden;
@@ -227,10 +259,21 @@ a {
   width: 100% !important;
   flex-wrap: wrap !important;
 }
-.rightSide{
-  width: 80%;
-  /* margin-top: 5px; */
-  margin-left: 3px;
+.rightSide {
+  width: 100%;
+  border: none !important;
+  box-shadow: none !important;
+  margin-top: 6px;
+}
+.outcard {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: #f5f7fa !important;
+}
+.asidecard {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: #f5f7fa !important;
 }
 </style>
 

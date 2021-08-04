@@ -8,7 +8,7 @@ export function comeRegister(parmars) {
     return request.post('/users/register', parmars)
 }
 
-export function changePassword(id,params) {
+export function changePassword(id, params) {
     return request.put(`/users/changePwd/${id}`, params)
 }
 
@@ -40,6 +40,6 @@ export function getArticles() {
     return request.get('articles')
 }
 
-export function loginToken(data){
-    return request.post("/users/token",data)
+export function loginToken(data) {
+    return request.post("/users/token", data)
 }

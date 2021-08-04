@@ -92,6 +92,7 @@ export default {
   padding: 18px 0;
 }
 .el-card {
+  padding: 20px;
   box-shadow: 5px 3px 5px grey;
 }
 .box-card {
