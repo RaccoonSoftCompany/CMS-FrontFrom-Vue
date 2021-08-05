@@ -31,7 +31,14 @@
                   </el-carousel>
                 </div>
                 <el-card class="rightSide">
-                  <div>48小时阅读排行</div>
+                  <h3>
+                    <img
+                      src="../components/img/阅读推荐.png"
+                      style="width: 24px; height: 24px"
+                      alt=""
+                    />
+                    48小时阅读排行
+                  </h3>
                   <el-card
                     style="float: left; width: 100%"
                     v-for="(item, index) in articleList"
@@ -47,7 +54,13 @@
                   </el-card>
                 </el-card>
                 <el-card class="rightSide">
-                  <h3>10天点赞更多</h3>
+                  <h3>
+                    <img
+                      src="../components/img/点赞推荐.png"
+                      style="width: 24px; height: 24px"
+                      alt=""
+                    />10天点赞更多
+                  </h3>
                   <el-card
                     style="float: left; width: 100%"
                     v-for="(item, index) in praiseList"
@@ -63,7 +76,13 @@
                   </el-card>
                 </el-card>
                 <el-card class="rightSide">
-                  <h3>10天评论排行</h3>
+                  <h3>
+                    <img
+                      src="../components/img/评论推荐.png"
+                      style="width: 24px; height: 24px"
+                      alt=""
+                    />10天评论排行
+                  </h3>
 
                   <el-card
                     style="float: left; width: 100%"
@@ -78,6 +97,15 @@
                       >
                     </router-link>
                   </el-card>
+                </el-card>
+                <el-card class="connection">
+                  <span style="color: #808080;font-size:14px">联系我们 （工作时间：8:30-22:00）</span><br>
+                  <span style="color: #808080;font-size:14px;float;left">RACCOON  &#10084; raccoon.com</span>
+                </el-card>
+                <el-card class="cultural">
+                  <span style="color: #808080;font-size:14px"> <a href="https://beian.miit.gov.cn/#/Integrated/index">闽ICP备398846号</a></span><br>
+                  <span style="color: #808080;font-size:14px;float;left">经验性网站备案信息</span><br>
+                  <span style="color: #808080;font-size:14px;float;left"> <img src="../components/img/备案.png" style="width:16px;height:16px" alt=""> 公安备案号1001011344</span>
                 </el-card>
               </el-card>
             </aside>
@@ -337,6 +365,24 @@ a {
   float: left;
   /* border: 0.1px solid gray; */
   box-shadow: none;
+}
+.connection {
+  width: 100%;
+  /* display: flex;
+  align-items: center; */
+  
+  border: none !important;
+  box-shadow: none !important;
+  margin-top: 5px;
+}
+.cultural{
+  width: 100%;
+  /* display: flex;
+  align-items: center; */
+  
+  border: none !important;
+  box-shadow: none !important;
+  margin-top: 2px;
 }
 .outcard {
   border: none !important;

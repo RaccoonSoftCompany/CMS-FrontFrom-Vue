@@ -41,12 +41,18 @@
     <!-- {{ this.$router.params.id }} -->
     <el-card :data="articleDetail" class="articleAction">
       <el-card class="incard">
-        <router-link :to="{ path: '/article' }" class="back">
-          返回
-        </router-link>
-        <br />
-        <h1>&nbsp;&nbsp;{{ articleDetail.aTitle }}</h1>
-        <br />
+        <div class="index">
+          <div>
+            <router-link :to="{ path: '/article' }" class="back">
+              <el-page-header> </el-page-header>
+            </router-link>
+          </div>
+          <div style="atitle">
+            <br />
+            <h1>{{ articleDetail.aTitle }}</h1>
+            <br />
+          </div>
+        </div>
         <el-card class="middle">
           &nbsp; &nbsp;
           {{ articleDetail.nickName }}
@@ -478,6 +484,11 @@ h4 {
 .eye {
   width: 24px;
   height: 22px;
+}
+.atitle{
+  width: 300px !important;
+  margin-right: 50px !important;
+  text-align: center;
 }
 .middle {
   border: none;

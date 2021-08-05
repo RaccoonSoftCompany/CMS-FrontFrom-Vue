@@ -25,7 +25,7 @@
             <span>{{ item.aTitle }}</span>
           </router-link>
         </h1>
-
+        <br>
         <h4>{{ item.aIntro | ellipsis }}</h4>
         <br />
         <div style="display: flex">
