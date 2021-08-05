@@ -43,6 +43,7 @@
                     style="float: left; width: 100%"
                     v-for="(item, index) in articleList"
                     :key="item.id"
+                    class="rank"
                   >
                     <router-link
                       :to="{ path: `articleDetail/?articleId=${item.id}` }"
@@ -59,12 +60,14 @@
                       src="../components/img/点赞推荐.png"
                       style="width: 24px; height: 24px"
                       alt=""
+                      
                     />10天点赞更多
                   </h3>
                   <el-card
                     style="float: left; width: 100%"
                     v-for="(item, index) in praiseList"
                     :key="item.id"
+                    class="rank"
                   >
                     <router-link
                       :to="{ path: `articleDetail/?articleId=${item.id}` }"
@@ -88,6 +91,7 @@
                     style="float: left; width: 100%"
                     v-for="(item, index) in commentList"
                     :key="item.id"
+                    class="rank"
                   >
                     <router-link
                       :to="{ path: `articleDetail/?articleId=${item.id}` }"
@@ -99,13 +103,30 @@
                   </el-card>
                 </el-card>
                 <el-card class="connection">
-                  <span style="color: #808080;font-size:14px">联系我们 （工作时间：8:30-22:00）</span><br>
-                  <span style="color: #808080;font-size:14px;float;left">RACCOON  &#10084; raccoon.com</span>
+                  <span style="color: #808080; font-size: 14px"
+                    >联系我们 （工作时间：8:30-22:00）</span
+                  ><br />
+                  <span style="color: #808080;font-size:14px;float;left"
+                    >RACCOON &#10084; raccoon.com</span
+                  >
                 </el-card>
                 <el-card class="cultural">
-                  <span style="color: #808080;font-size:14px"> <a href="https://beian.miit.gov.cn/#/Integrated/index">闽ICP备398846号</a></span><br>
-                  <span style="color: #808080;font-size:14px;float;left">经验性网站备案信息</span><br>
-                  <span style="color: #808080;font-size:14px;float;left"> <img src="../components/img/备案.png" style="width:16px;height:16px" alt=""> 公安备案号1001011344</span>
+                  <span style="color: #808080; font-size: 14px">
+                    <a href="https://beian.miit.gov.cn/#/Integrated/index"
+                      >闽ICP备398846号</a
+                    ></span
+                  ><br />
+                  <span style="color: #808080;font-size:14px;float;left"
+                    >经验性网站备案信息</span
+                  ><br />
+                  <span style="color: #808080;font-size:14px;float;left">
+                    <img
+                      src="../components/img/备案.png"
+                      style="width: 16px; height: 16px"
+                      alt=""
+                    />
+                    公安备案号1001011344</span
+                  >
                 </el-card>
               </el-card>
             </aside>
@@ -360,26 +381,34 @@ a {
   box-shadow: none !important;
   margin-top: 5px;
 }
+.rightSide:hover {
+
+}
 .rightSide .rank {
   width: 100%;
   float: left;
   /* border: 0.1px solid gray; */
   box-shadow: none;
 }
+.rank:hover{
+    box-shadow: 0px 1rem 2rem 0px rgba(48, 55, 66, 0.15);
+  transform: translate(0, -4px);
+  transition-delay: 0s !important;
+}
 .connection {
   width: 100%;
   /* display: flex;
   align-items: center; */
-  
+
   border: none !important;
   box-shadow: none !important;
   margin-top: 5px;
 }
-.cultural{
+.cultural {
   width: 100%;
   /* display: flex;
   align-items: center; */
-  
+
   border: none !important;
   box-shadow: none !important;
   margin-top: 2px;
