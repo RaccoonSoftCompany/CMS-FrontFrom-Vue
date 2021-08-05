@@ -1,134 +1,62 @@
 <template>
   <div class="container" ref="container">
-    <el-card
-      class="topCard"
-      :inline="true"
-      v-for="item in articlelist"
-      :key="item.value"
-      style="margin-top: 1px"
-    >
-      <img src="./img/二维码1.png" alt="" style="float: left" />
-      <br />
-
-      <h1>
-        <!-- <el-button > -->
-        <router-link :to="{ path: `articleDetail/?articleId=${item.id}` }">
-          <span>{{ item.aTitle }}</span>
-        </router-link>
-        <!-- </el-button> -->
-      </h1>
-
-      <!-- <el-card class="incard">
-        <br />
-        <h1>&nbsp;&nbsp;{{ articleDetail.aTitle }}</h1>
+    <div class="infinite-list-wrapper" style="overflow: auto">
+      <!-- <ul
+        class="list"
+        v-infinite-scroll="load"
+        infinite-scroll-disabled="disabled"
+      >
+        <li v-for="i in count" key="i.id" class="list-item">{{ i }}</li>
+      </ul> -->
+      <el-card
+        class="topCard"
+        :inline="true"
+        v-infinite-scroll="load"
+        infinite-scroll-disabled="disabled"
+        v-for="item in articlelist"
+        :key="item.value"
+        style="margin-top: 1px"
+      >
+        <img src="./img/二维码1.png" alt="" style="float: left" />
         <br />
 
-        <el-card class="middle">
-          &nbsp; &nbsp;
-          {{ articleDetail.nickName }}
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          {{ articleDetail.createdTime }}
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <img
-            src="./img/articleReadEyes.png"
-            class="eye"
-            align="absmiddle"
-            alt=""
-          />
+        <h1>
+          <router-link :to="{ path: `articleDetail/?articleId=${item.id}` }">
+            <span>{{ item.aTitle }}</span>
+          </router-link>
+        </h1>
 
-          {{ articleDetail.aReadCount }}
-          <b
-            style="cursor: pointer; margin-left: 20px"
-            id="dxal"
-            :class="activeClass == 'dxal' ? 'active' : ''"
-            @click="addStyleOrGetDate"
-          >
-            &#10084;
-          </b>
-          <a href="#" class="power">版权</a>
-        </el-card>
+        <h4>{{ item.aIntro | ellipsis }}</h4>
         <br />
-        <div class="middletmp">
-          <h3>Raccoon出品,必属精品</h3>
+        <div style="display: flex">
+          <p style="width: 20%">
+            <span style="font-weight: 600"></span>{{ item.nickName }}
+          </p>
+          <p style="width: 25%">
+            <img src="../Images/bx-calendar-alt.png" alt="" />
+            <span style="font-weight: 600"></span> {{ item.createdTime }}
+          </p>
+          <p style="width: 20%">
+            <img src="../Images/bxs-like.png" alt="" />
+            <span style="font-weight: 600"></span>
+            {{ item.aPraiseCount }}
+          </p>
+          <p style="width: 20%">
+            <img src="../Images/bx-chat.png" alt="" />
+            <span style="font-weight: 600"></span>
+            {{ item.aTalkCount }}
+          </p>
+          <p style="width: 20%">
+            <img src="../Images/bx-book-open.png" alt="" />
+            <span style="font-weight: 600"></span>
+            {{ item.aReadCount }}
+          </p>
         </div>
-        <br />
-        <el-card class="inDetail">
-          <div class="articleText">
-            {{ articleDetail.aText }}
-          </div>
-        </el-card>
-        <el-card class="commentDetail">
-          <br />
-          <el-form :inline="true" ref="inputData" :model="inputData">
-            <el-form-item lable="输入" prop="input">
-              <el-input
-                v-model="inputData.input"
-                type="text"
-                auto-complete="off"
-                style="width: 820px"
-                placeholder="优质评论可以帮助作者获得更高权重"
-                :disable="hasText"
-              ></el-input>
-              <el-button
-                type="primary"
-                style="margin-left: 15px"
-                @click="comment('inputData')"
-                >评论</el-button
-              >
-            </el-form-item>
-          </el-form>
-          <el-card
-            class="articleCommentText"
-            :inline="true"
-            v-for="(item, index) in articleComment"
-            ref="articleComment"
-            :key="item.id"
-          >
-            <div class="articleArr">
-              {{ item.uNickName }}：&nbsp;&nbsp;&nbsp;{{
-                item.talkText
-              }}&nbsp;&nbsp;&nbsp;&nbsp;
+      </el-card>
+      <p v-if="loading">加载中...</p>
+      <p v-if="noMore">没有更多了</p>
+    </div>
 
-              <button
-                class="remove"
-                @click="remove(item.talkId, index)"
-                v-if="item.userId == isId"
-              >
-                删除
-              </button>
-              <br />
-            </div>
-          </el-card>
-        </el-card>
-      </el-card> -->
-
-      <h4>{{ item.aIntro | ellipsis }}</h4>
-      <br />
-      <div style="display: flex">
-        <p style="width: 20%">
-          <span style="font-weight: 600"></span>{{ item.nickName }}
-        </p>
-        <p style="width: 25%">
-          <img src="../Images/bx-calendar-alt.png" alt="" />
-          <span style="font-weight: 600"></span> {{ item.createdTime }}
-        </p>
-        <p style="width: 20%">
-          <img src="../Images/bxs-like.png" alt="" />
-          <span style="font-weight: 600"></span>
-          {{ item.aPraiseCount }}
-        </p>
-        <p style="width: 20%">
-          <img src="../Images/bx-chat.png" alt="" />
-          <span style="font-weight: 600"></span>
-          {{ item.aTalkCount }}
-        </p>
-        <p style="width: 20%">
-          <img src="../Images/bx-book-open.png" alt="" />
-          <span style="font-weight: 600"></span>
-          {{ item.aReadCount }}
-        </p>
-      </div>
-    </el-card>
     <!-- 登录 -->
     <el-dialog :visible.sync="loginDialogVisible" width="25%">
       <el-form
@@ -176,7 +104,7 @@ import "./css/index.css";
 // import { setToken, loginStatus } from "../utils/auth";
 // import { comeLogin, loginToken } from "../api/user";
 // import { isLogin } from "../utils/auth";
-import { getArticles} from "../api/user";
+import { getArticles } from "../api/user";
 // import { getArticleTalks} from "../api/article";
 import Login from "../components/login.vue";
 export default {
@@ -191,6 +119,8 @@ export default {
   },
   data() {
     return {
+      count: 5,
+      loading: false,
       activeClass: "0",
       hasText: true,
       articleComment: [],
@@ -228,13 +158,19 @@ export default {
   },
   props: ["articleId"],
   methods: {
-    
+    load() {
+      this.loading = true;
+      setTimeout(() => {
+        // this.articlelist += 1;
+        this.loading = false;
+      }, 2000);
+    },
   },
 
   mounted() {
     getArticles().then((res) => {
       console.log(res);
-      this.articlelist = res.data.reverse();
+      this.articlelist = res.data;
     });
     // $(function () {
     //   $(".like").click(function () {
@@ -242,7 +178,14 @@ export default {
     //   });
     // });
   },
-  computed: {},
+  computed: {
+    noMore() {
+      return this.articlelist >= 10;
+    },
+    disabled() {
+      return this.loading || this.noMore;
+    },
+  },
 };
 </script>
 

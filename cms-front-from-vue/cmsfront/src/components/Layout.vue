@@ -7,13 +7,17 @@
           <div class="main-header">
             <Card></Card>
           </div>
+
           <section class="main">
             <article>
-              <el-card class="outcard">
+              <div class="outcard">
+                <!-- <el-card> -->
+                <!-- </el-card> -->
+
                 <div class="context">
                   <router-view></router-view>
                 </div>
-              </el-card>
+              </div>
             </article>
             <aside>
               <el-card class="asidecard">
@@ -27,28 +31,53 @@
                   </el-carousel>
                 </div>
                 <el-card class="rightSide">
-                  <h3>48小时阅读排行</h3>
-                  <span class="text1">1.xxxxxxxxxxxxxx</span><br />
-                  <span class="text1">2.xxxxxxxxxxxxxx</span><br />
-                  <span class="text1">3.xxxxxxxxxxxxxx</span><br />
-                  <span class="text1">4.xxxxxxxxxxxxxx</span><br />
-                  <span class="text1">5.xxxxxxxxxxxxxx</span>
+                  <div>48小时阅读排行</div>
+                  <el-card
+                    style="float: left; width: 100%"
+                    v-for="(item, index) in articleList"
+                    :key="item.id"
+                  >
+                    <router-link
+                      :to="{ path: `articleDetail/?articleId=${item.id}` }"
+                    >
+                      <span style="float: left"
+                        >{{ index + 1 }}.{{ item.aTitle }}</span
+                      >
+                    </router-link>
+                  </el-card>
                 </el-card>
                 <el-card class="rightSide">
-                  <h3>10天编辑推荐更多</h3>
-                  <span class="text1">1.xxxxxxxxxxxxxx</span><br />
-                  <span class="text1">2.xxxxxxxxxxxxxx</span><br />
-                  <span class="text1">3.xxxxxxxxxxxxxx</span><br />
-                  <span class="text1">4.xxxxxxxxxxxxxx</span><br />
-                  <span class="text1">5.xxxxxxxxxxxxxx</span>
+                  <h3>10天点赞更多</h3>
+                  <el-card
+                    style="float: left; width: 100%"
+                    v-for="(item, index) in praiseList"
+                    :key="item.id"
+                  >
+                    <router-link
+                      :to="{ path: `articleDetail/?articleId=${item.id}` }"
+                    >
+                      <span style="float: left"
+                        >{{ index + 1 }}.{{ item.aTitle }}</span
+                      >
+                    </router-link>
+                  </el-card>
                 </el-card>
                 <el-card class="rightSide">
                   <h3>10天评论排行</h3>
-                  <span class="text1">1.xxxxxxxxxxxxxx</span><br />
-                  <span class="text1">2.xxxxxxxxxxxxxx</span><br />
-                  <span class="text1">3.xxxxxxxxxxxxxx</span><br />
-                  <span class="text1">4.xxxxxxxxxxxxxx</span><br />
-                  <span class="text1">5.xxxxxxxxxxxxxx</span>
+
+                  <el-card
+                    style="float: left; width: 100%"
+                    v-for="(item, index) in commentList"
+                    :key="item.id"
+                  >
+                    <router-link
+                      :to="{ path: `articleDetail/?articleId=${item.id}` }"
+                    >
+                      <span style="float: left"
+                        >{{ index + 1 }}.{{ item.aTitle }}</span
+                      >
+                    </router-link>
+                  </el-card>
                 </el-card>
               </el-card>
             </aside>
@@ -70,7 +99,12 @@
 </template>
 
 <script>
-// import $ from 'jquery'
+// import $ from "jquery";
+import {
+  TheFirstReadCount,
+  TheTenPraiseCount,
+  TheTenTalkCount,
+} from "../api/article";
 import Card from "./card.vue";
 import Header from "./Header";
 import Footer from "./footer.vue";
@@ -82,7 +116,9 @@ export default {
   },
   data() {
     return {
-      list: [],
+      articleList: {},
+      praiseList: {},
+      commentList: {},
       imgUrls: [
         { id: 0, idView: require("./img/csdn.png") },
         { id: 1, idView: require("./img/csdn2.jpg") },
@@ -98,6 +134,24 @@ export default {
     // },
   },
   computed: {},
+  mounted() {
+    // $(".some-list").wrapper({
+    //   item: "div.item",
+    //   count: 5,
+    // });
+    TheFirstReadCount().then((res) => {
+      this.articleList = res.data;
+      console.log(res);
+    });
+    TheTenPraiseCount().then((res) => {
+      this.praiseList = res.data;
+      console.log(res);
+    });
+    TheTenTalkCount().then((res) => {
+      this.commentList = res.data;
+      console.log(res);
+    });
+  },
   // mounted() {
   //   this.imgLoad();
   //   window.addEventListener(
@@ -117,13 +171,22 @@ body {
   margin: 0;
   background-color: #f5f7fa !important;
 }
+.wrapper {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.load-more__btn {
+  padding-top: 10px;
+  display: inline-block;
+}
 .main-top {
   border-radius: 10px;
   text-align: center;
   width: 100%;
-  height: 680px;
-  background: linear-gradient(45deg, #fad4fc, #dae6f1);
+  height: 580px;
+  background: linear-gradient(45deg, #d4f6fc, #fadbfa);
   box-shadow: 5px 8px 5px rgb(221, 220, 220);
 }
 .el-footer {
@@ -175,8 +238,9 @@ a {
   text-decoration: none !important;
 }
 .main-header {
-  width: 80%;
   margin: 0px auto;
+  width: 80%;
+  height: 470px;
 }
 .text {
   font-size: 14px;
@@ -198,7 +262,7 @@ a {
 .main {
   width: 90%;
 
-  margin: 10px auto 0;
+  margin: auto 0;
   display: flex;
 }
 .main h1 {
@@ -213,7 +277,7 @@ a {
 .main > aside {
   /* float: right; */
   overflow: hidden;
-  width: 25%;
+  width: 35%;
 }
 .main > aside > dl {
   position: relative;
@@ -261,9 +325,18 @@ a {
 }
 .rightSide {
   width: 100%;
+  /* display: flex; */
+  /* align-items: center; */
+  justify-content: space-between;
   border: none !important;
   box-shadow: none !important;
-  margin-top: 6px;
+  margin-top: 5px;
+}
+.rightSide .rank {
+  width: 100%;
+  float: left;
+  /* border: 0.1px solid gray; */
+  box-shadow: none;
 }
 .outcard {
   border: none !important;

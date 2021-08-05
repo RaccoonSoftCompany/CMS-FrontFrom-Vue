@@ -1,18 +1,24 @@
 <template>
   <div class="box-card">
-    <!-- <el-card class="box-card"> -->
-    <el-carousel :interval="2500" arrow="always" :height="bannerHeight + 'px'">
-      <el-carousel-item v-for="item in imgUrls" :key="item.id">
-        <el-row>
-          <img
-            ref="bannerHeight"
-            :src="item.idView"
-            class="bannerImg"
-            @load="imgLoad"
-          />
-        </el-row>
-      </el-carousel-item>
-    </el-carousel>
+    <div class="scrollcard"> 
+      <el-carousel
+        :interval="2500"
+        arrow="always"
+        :height="bannerHeight + 'px'"
+      >
+        <el-carousel-item v-for="item in imgUrls" :key="item.id">
+          <el-row>
+            <img
+              ref="bannerHeight"
+              :src="item.idView"
+              class="bannerImg"
+              @load="imgLoad"
+            />
+          </el-row>
+        </el-carousel-item>
+      </el-carousel>
+    </div>
+
     <el-col :span="6">
       <el-card shadow="hover" class="card"
         ><img src="../Images/bxs-hot.png" alt="" />
@@ -99,9 +105,14 @@ export default {
   border-radius: 20px;
   margin: 0 auto;
   margin-top: 5%;
-  width: 90%;
-  height: 600px;
+  width: 80%;
+  /* height: 400px !important; */
 }
+/* .scrollcard{
+  width: 100%;
+  margin: 0 auto;
+  height: 400px;
+} */
 .el-carousel {
   border-radius: 7px;
 }
@@ -131,11 +142,11 @@ export default {
   /* transition: opacity 0.3s ease-in-out; */
 }
 /* .card:hover { */
-  /* -webkit-transform: scale(1.25, 1.25); */
-  /* transform: scale(1.2, 1.2); */
+/* -webkit-transform: scale(1.25, 1.25); */
+/* transform: scale(1.2, 1.2); */
 /* } */
 /* .card:hover::after { */
-  /* opacity: 1; */
+/* opacity: 1; */
 /* } */
 
 .card {

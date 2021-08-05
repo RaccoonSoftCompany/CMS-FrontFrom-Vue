@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <!-- 登录 -->
-    <el-dialog :visible.sync="loginDialogVisible" width="25%">
+    <el-dialog :visible.sync="loginDialogVisible" width="25%" class="modal">
       <el-form
         class="user-change-key"
         ref="form"
@@ -41,7 +41,9 @@
     <!-- {{ this.$router.params.id }} -->
     <el-card :data="articleDetail" class="articleAction">
       <el-card class="incard">
-        <router-link :to="{ path: '/article' }" class="back"> 返回 </router-link>
+        <router-link :to="{ path: '/article' }" class="back">
+          返回
+        </router-link>
         <br />
         <h1>&nbsp;&nbsp;{{ articleDetail.aTitle }}</h1>
         <br />
@@ -188,20 +190,25 @@ export default {
         articleId: this.articleId,
       };
       console.log(data);
-      addPraises(data).then((res) => {
-        console.log(res);
-        if (res.code === 1000) {
-          this.activeClass = true;
-        } else if (res.code === 6666) {
-          this.activeClass = false;
-        }
-      });
-      console.log(e);
-      //获取事件的ID 值
-      // //把ID 值 赋给  activeClass
-      var onlyId = e.currentTarget.id;
-      console.log(onlyId);
+      if (data.userId == null) {
+        this.$message.info("请回到首页登陆后重试!");
+      } else {
+        addPraises(data).then((res) => {
+          console.log(res);
+          if (res.code === 1000) {
+            this.activeClass = true;
+          } else if (res.code === 6666) {
+            this.activeClass = false;
+          }
+        });
+        console.log(e);
+        //获取事件的ID 值
+        // //把ID 值 赋给  activeClass
+        var onlyId = e.currentTarget.id;
+        console.log(onlyId);
+      }
     },
+
     comment() {
       // this.$refs["inputData"].validate((valid) => {
       //   if (valid) {
@@ -230,6 +237,7 @@ export default {
         });
       } else {
         this.loginDialogVisible = true;
+        this.$message.info("请登陆🎃");
       }
     },
     getParams() {
@@ -271,15 +279,9 @@ export default {
                     message: "登陆成功！",
                     type: "success",
                   });
-                  // this.infoForm.nickname = res.data.nickName;
                   this.Username = res.data.uName;
-                  // this.nickName = res.data.nickName;
-                  // this.uId = res.data.id;
                   setToken(data.token, data.refreshToken);
-
                   console.log(data);
-
-                  // this.isLogin = false;
                   this.loginDialogVisible = false;
                   let userID = localStorage.getItem("id");
                   let articleId = this.isArticleId;
@@ -309,6 +311,12 @@ export default {
             });
           }
         }
+      });
+    },
+    scroll() {
+      addEventListener("scroll", () => {
+        let header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
       });
     },
   },
@@ -351,7 +359,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
   overflow: hidden;
   border: none;
@@ -381,17 +389,20 @@ export default {
   justify-content: center;
 }
 .power {
-  margin-right: 20px;
-  float: right;
+  margin-left: 620px;
+  /* width: 500px; */
+  float: right !important;
 }
 .active {
   border: none;
   color: #ff0000;
 }
-.back{
-    font-size: 18px;
-    font-weight: 900;
-    float: left;
+.back {
+  font-size: 18px;
+  font-weight: 900;
+  float: left;
+  margin-left: 20px;
+  margin-top: 15px;
 }
 .el-link:hover {
   transform: scale(1.2, 1.2);
@@ -406,6 +417,7 @@ h4 {
   font-weight: 600;
   color: #555666;
 }
+
 .active {
   border: none;
   color: #ff0000;
@@ -461,7 +473,7 @@ h4 {
 }
 .incard {
   margin: 0 auto;
-  width: 50% !important;
+  width: 55% !important;
 }
 .eye {
   width: 24px;
@@ -472,10 +484,10 @@ h4 {
   box-shadow: none;
   background-color: #f8f8f8;
   font-size: 14px;
-  width: 100vh;
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: space-between; */
+  width: 54vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .edit_container,

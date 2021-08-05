@@ -67,7 +67,7 @@
       </ul>
     </header>
 
-    <section class="banner"></section>
+    <!-- <section class="banner"></section> -->
 
     <!-- 登录 -->
     <el-dialog :visible.sync="loginDialogVisible" width="25%">
@@ -878,12 +878,12 @@ header ul li a {
   font-weight: 500px;
   transition: 0.5s;
 }
-.banner {
+/* .banner {
   position: relative;
   width: 100%;
   height: 100vh;
   background-size: cover;
-}
+} */
 header.sticky .logo,
 header.sticky ul li a {
   color: #000;

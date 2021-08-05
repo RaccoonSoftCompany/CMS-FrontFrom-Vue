@@ -12,6 +12,7 @@ let routes = [
                 title: "文章内容",
                 component: () => import('../components/article')
             },
+        
             {
                 path: 'news',
                 name: 'news',
