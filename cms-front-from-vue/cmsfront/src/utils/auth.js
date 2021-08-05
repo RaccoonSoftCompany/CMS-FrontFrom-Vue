@@ -1,5 +1,6 @@
 const TOKENKEY = "token"
 const REFRESHTOKENKEY = "refreshToken"
+const ID = 'id'
 const USERNAME = "username"
 const PASSWORD = "password"
 
@@ -24,6 +25,7 @@ export function getRefreshToken() {
 }
 
 export function removeToken() {
+    localStorage.removeItem(ID)
     localStorage.removeItem(TOKENKEY)
     localStorage.removeItem(REFRESHTOKENKEY)
 }

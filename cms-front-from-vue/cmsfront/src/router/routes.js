@@ -31,12 +31,19 @@ let routes = [
                 path: 'about',
                 name: 'about',
                 component: () => import('../views/about')
-            }
+            },
+
         ],
 
 
 
     },
+    {
+        path: '/articleDetail',
+        name: 'articleDetail',
+        props:router=>({id:router.query.articleId}),
+        component: () => import(`../views/articleDetail`)
+    }
 
 ]
 export default routes

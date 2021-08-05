@@ -43,3 +43,8 @@ export function getArticles() {
 export function loginToken(data) {
     return request.post("/users/token", data)
 }
+
+// 访问量
+export function addRead(data){
+    return request.post('articlereads/addread',data)
+}

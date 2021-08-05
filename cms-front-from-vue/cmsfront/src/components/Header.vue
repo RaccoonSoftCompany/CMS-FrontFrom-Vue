@@ -503,6 +503,8 @@ export default {
             console.log(data);
             comeLogin(data).then((res) => {
               //所以此处打印的是用户状态信息
+                console.log(res.data);
+                localStorage.setItem("id",res.data.id)
               if (res.code === 1000) {
                 loginToken(data).then(({ data }) => {
                   this.$message({
@@ -514,7 +516,7 @@ export default {
                   this.nickName = res.data.nickName;
                   this.uId = res.data.id;
                   setToken(data.token, data.refreshToken);
-
+                  console.log(data);
                   this.isLogin = false;
                   this.loginDialogVisible = false;
                   this.$router.push("/");
