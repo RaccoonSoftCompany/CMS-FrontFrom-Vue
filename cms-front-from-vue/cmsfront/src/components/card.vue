@@ -64,8 +64,8 @@ export default {
   methods: {
     imgLoad() {
       this.$nextTick(() => {
-        this.bannerHeight = this.$refs.bannerHeight[0].height;
-        console.log((this.bannerHeight = this.$refs.bannerHeight[0].height));
+        this.bannerHeight = this.$refs.bannerHeight[0];
+        // console.log((this.bannerHeight = this.$refs.bannerHeight[0].height));
       });
     },
   },

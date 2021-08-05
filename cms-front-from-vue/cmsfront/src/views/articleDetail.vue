@@ -41,11 +41,7 @@
     <!-- {{ this.$router.params.id }} -->
     <el-card :data="articleDetail" class="articleAction">
       <el-card class="incard">
-        <router-link :to="{ path: '/article' }"
-          ><el-buttom type="primary" style="float: left"
-            >返回</el-buttom
-          ></router-link
-        >
+        <router-link :to="{ path: '/article' }" class="back"> 返回 </router-link>
         <br />
         <h1>&nbsp;&nbsp;{{ articleDetail.aTitle }}</h1>
         <br />
@@ -65,9 +61,8 @@
           {{ articleDetail.aReadCount }}
           <b
             style="cursor: pointer; margin-left: 20px"
-            id="dxal"
-            :class="activeClass == 'dxal' ? 'active' : ''"
             @click="addStyleOrGetDate"
+            :class="{ active: activeClass }"
           >
             &#10084;
           </b>
@@ -88,7 +83,12 @@
         </el-card>
         <el-card class="commentDetail">
           <br />
-          <el-form class="user-change-key" ref="inputData" :rules="inputrules" :model="inputData">
+          <el-form
+            class="user-change-key"
+            ref="inputData"
+            :rules="inputrules"
+            :model="inputData"
+          >
             <el-form-item lable="输入" prop="input">
               <el-input
                 v-model="inputData.input"
@@ -97,7 +97,6 @@
                 style="width: 820px"
                 placeholder="优质评论可以帮助作者获得更高权重"
                 :disable="hasText"
-
               ></el-input>
               <el-button
                 type="primary"
@@ -144,8 +143,9 @@ import {
   addComment,
   deleteComment,
   getArticleTalks,
+  isArticleAPraises,
 } from "../api/article";
-import { comeLogin, loginToken } from "../api/user";
+import { comeLogin, loginToken, addRead, addPraises } from "../api/user";
 import { setToken, loginStatus } from "../utils/auth";
 export default {
   data() {
@@ -154,8 +154,10 @@ export default {
       loginDialogVisible: false,
       isId: localStorage.getItem("id"),
       isArticleId: "",
-      activeClass: "0",
-      articleDetail: "",
+      activeClass: false,
+      articleDetail: {
+        aReadCount: "",
+      },
       articleComment: [],
       inputData: {
         input: "",
@@ -170,20 +172,35 @@ export default {
         username: [
           { required: true, message: "请输入用户名", trigger: "blur" },
         ],
-        password: [{  required: true, message: "请输入密码", trigger: "blur" }],
+        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
       },
-      inputrules:{
-          input:[{  required: true, message: "内容呢???", trigger: "blur" }]
-      }
+      inputrules: {
+        input: [{ required: true, message: "内容呢???", trigger: "blur" }],
+      },
     };
   },
+  componnent: {},
   props: ["id"],
   methods: {
     addStyleOrGetDate(e) {
+      let data = {
+        userId: this.isId,
+        articleId: this.articleId,
+      };
+      console.log(data);
+      addPraises(data).then((res) => {
+        console.log(res);
+        if (res.code === 1000) {
+          this.activeClass = true;
+        } else if (res.code === 6666) {
+          this.activeClass = false;
+        }
+      });
+      console.log(e);
       //获取事件的ID 值
       // //把ID 值 赋给  activeClass
       var onlyId = e.currentTarget.id;
-      this.activeClass = onlyId;
+      console.log(onlyId);
     },
     comment() {
       // this.$refs["inputData"].validate((valid) => {
@@ -279,8 +296,8 @@ export default {
                       console.log(this.articleComment);
 
                       this.$message.success("评论成功!");
-                    //   this.inputData = { brand_right: 0 };
-                        this.$refs["inputData"].resetFields();
+                      //   this.inputData = { brand_right: 0 };
+                      this.$refs["inputData"].resetFields();
                     }
                   });
                   //   this.$router.push("/");
@@ -303,19 +320,34 @@ export default {
       console.log("我是文章Id:" + this.articleId);
       console.log(res.data);
       this.articleComment = res.data;
+
       console.log(this.articleComment);
     });
     getArticleDetail(this.articleId).then((res) => {
       this.articleDetail = res.data[0];
-
+      let data = {
+        userId: this.isId,
+        articleId: res.data[0].id,
+      };
+      console.log(data);
+      addRead(data).then((res) => {
+        if (res.code === 1000) {
+          this.articleDetail.aReadCount += 1;
+        }
+        console.log(data);
+        console.log(res);
+        // this.articlelist[index].aReadCount += 1;
+      });
       console.log(this.articleDetail);
     });
+    let uId = this.isId;
+    let aId = this.articleId;
+    isArticleAPraises(uId, aId).then((res) => {
+      console.log(res.data);
+      this.activeClass = res.data.isPraise;
+    });
   },
-  computed: {
-    // editor() {
-    //   return this.$refs.myQuillEditor.quill;
-    // },
-  },
+  computed: {},
 };
 </script>
 
@@ -356,7 +388,11 @@ export default {
   border: none;
   color: #ff0000;
 }
-
+.back{
+    font-size: 18px;
+    font-weight: 900;
+    float: left;
+}
 .el-link:hover {
   transform: scale(1.2, 1.2);
 }

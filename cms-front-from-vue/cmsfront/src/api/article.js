@@ -20,3 +20,7 @@ export function deleteComment(id){
     return request.delete(`/ArticleTalks/deletetalk/${id}`)
 }
 
+// 是否点赞
+export function isArticleAPraises(uId,aId){
+    return request.get(`ArticleAPraises/${uId}/${aId}`)
+}

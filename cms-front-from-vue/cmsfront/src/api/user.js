@@ -46,5 +46,10 @@ export function loginToken(data) {
 
 // 访问量
 export function addRead(data){
-    return request.post('articlereads/addread',data)
+    return request.post('ArticleReads/addRead',data)
+}
+
+// 点赞量
+export function addPraises(data){
+    return request.post('ArticleAPraises/addPraises',data)
 }
