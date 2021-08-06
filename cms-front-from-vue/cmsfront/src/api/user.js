@@ -29,7 +29,7 @@ export function newUserInfos(id) {
 }
 
 export function getUserInfos(id) {
-    return request.post(`userinfos/newuserinfo/${id}`, {})
+    return request.get(`userinfos/${id}`)
 }
 
 export function changeUserInfos(id, data) {

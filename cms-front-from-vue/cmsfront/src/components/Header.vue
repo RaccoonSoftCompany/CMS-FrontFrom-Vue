@@ -40,7 +40,7 @@
               <!-- </el-avater> -->
               <el-avatar
                 :size="40"
-                :src="path + avaterImg"
+                :src="path + uImageUrl"
                 @error="errorHandler"
               >
                 <img
@@ -277,6 +277,7 @@
     <el-dialog
       title="UserInfo"
       :visible.sync="infoDialogVisible"
+      :before-close="handleCancel"
       width="25%"
       center
     >
@@ -289,15 +290,36 @@
         >
           <el-row :span="6"
             ><div class="grid-content bg-purple-light">
-              <el-upload>
-                <el-avatar
-                  auto-upload="false"
-                  :src="path+avaterImg"
-                  action="https://jsonplaceholder.typicode.com/posts/"
-                ></el-avatar>
-              </el-upload>
-              <button slot="trigger"></button></div
-          ></el-row>
+              <div>
+                <el-upload
+                  class="avatar-uploader"
+                  ref="upload"
+                  :action="'http://localhost:5000/UploadFile/userimage/' + uId"
+                  :on-preview="handlePreview"
+                  :on-remove="handleRemove"
+                  :file-list="fileList"
+                  :on-success="success"
+                  :auto-upload="false"
+                  list-type="picture-card"
+                  :limit="1"
+                >
+                  <img
+                    v-if="uImageUrl"
+                    slot="trigger"
+                    :src="path + uImageUrl"
+                    class="avatar"
+                  />
+                </el-upload>
+                <el-button
+                  style="margin-left: 30px; margin-top: 40px"
+                  size="small"
+                  type="success"
+                  @click="submitUpload"
+                  >更新头像</el-button
+                >
+              </div>
+            </div></el-row
+          >
           <br />
           <!-- <el-form-item lable="头像" style="display: flex"> </el-form-item> -->
 
@@ -400,6 +422,7 @@ import {
   forgetPasswordtoUsername,
   getMatters,
   changeUserInfos,
+  getUserInfos,
   // loginToken,
 } from "../api/user";
 // import Cookies from "js-cookie";
@@ -407,12 +430,13 @@ export default {
   data() {
     return {
       path: "http://localhost:5000/",
-      avaterImg: localStorage.getItem("uImageUrl"),
+      avaterImg: "",
+      fileList: [],
       values: "",
       Username: "",
       nickName: "",
-      uImageUrl: "",
-      uId: "",
+      uImageUrl: localStorage.getItem("uImageUrl"),
+      uId: localStorage.getItem("id"),
       getProblemId: "",
       isLogin: true,
       infoDialogVisible: false,
@@ -519,6 +543,26 @@ export default {
   },
 
   methods: {
+    success(file) {
+      let newImg = file.data;
+      console.log(file);
+      localStorage.removeItem("uImageUrl");
+      localStorage.setItem("uImageUrl", newImg);
+      this.uImageUrl = newImg;
+    },
+    submitUpload() {
+      if (this.fileList.length <= 0) {
+        this.$message.info("请选择图片");
+      }
+
+      this.$refs.upload.submit();
+    },
+    handleRemove(file, imageUrl) {
+      console.log(file, imageUrl);
+    },
+    handlePreview(file) {
+      console.log(file);
+    },
     // bat() {
     //   console.log(this.path);
     //   console.log(this.avaterImg);
@@ -553,7 +597,7 @@ export default {
                 });
                 localStorage.setItem("uImageUrl", res.data.uImageUrl);
 
-                this.avaterImg = localStorage.getItem("uImageUrl");
+                this.uImageUrl = localStorage.getItem("uImageUrl");
                 localStorage.setItem("id", res.data.id);
                 setToken(res.data.token, res.data.refreshToken);
 
@@ -722,13 +766,24 @@ export default {
       this.changeDialogVisible = false;
       this.centerDialogVisible = false;
       this.infoDialogVisible = false;
+      this.$refs.upload.clearFiles();
     },
     // 登陆成功用户功能
     handleCommand(command) {
       switch (command) {
         case "info":
           // console.log("个人信息");
+
           this.infoDialogVisible = true;
+
+          getUserInfos(this.uId).then((res) => {
+            this.infoForm.sex = res.data.sex;
+
+            localStorage.setItem("uImageUrl", res.data.imageURL);
+            // this.uImageUrl = res.data.imageURL
+            console.log(res);
+          });
+
           break;
         case "edit":
           // console.log("修改密码");
@@ -959,5 +1014,28 @@ header.sticky ul li a {
   color: #ffffff;
   margin: 0 15px;
   transition: 0.5s;
+}
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+}
+.avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
 }
 </style>
