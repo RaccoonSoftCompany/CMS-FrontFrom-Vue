@@ -1,6 +1,6 @@
 <template>
   <div class="container" ref="container">
-    <div class="infinite-list-wrapper" style="overflow: auto">
+    <div class="infinite-list-wrapper" style="overflow: auto" >
       <!-- <ul
         class="list"
         v-infinite-scroll="load"
@@ -11,8 +11,8 @@
       <el-card
         class="topCard"
         :inline="true"
-        v-infinite-scroll="load"
-        infinite-scroll-disabled="disabled"
+        
+        
         v-for="item in articlelist"
         :key="item.value"
         style="margin-top: 1px"
@@ -53,8 +53,8 @@
           </p>
         </div>
       </el-card>
-      <p v-if="loading">加载中...</p>
-      <p v-if="noMore">没有更多了</p>
+      <!-- <p v-if="loading">加载中...</p>
+      <p v-if="noMore">没有更多了</p> -->
     </div>
 
     <!-- 登录 -->
@@ -158,13 +158,13 @@ export default {
   },
   props: ["articleId"],
   methods: {
-    load() {
-      this.loading = true;
-      setTimeout(() => {
-        // this.articlelist += 1;
-        this.loading = false;
-      }, 2000);
-    },
+    // load() {
+    //   this.loading = true;
+    //   setTimeout(() => {
+    //     // this.articlelist += 1;
+    //     this.loading = false;
+    //   }, 2000);
+    // },
   },
 
   mounted() {
@@ -179,12 +179,12 @@ export default {
     // });
   },
   computed: {
-    noMore() {
-      return this.articlelist >= 10;
-    },
-    disabled() {
-      return this.loading || this.noMore;
-    },
+    // noMore() {
+    //   return this.articlelist >= 10;
+    // },
+    // disabled() {
+    //   return this.loading || this.noMore;
+    // },
   },
 };
 </script>

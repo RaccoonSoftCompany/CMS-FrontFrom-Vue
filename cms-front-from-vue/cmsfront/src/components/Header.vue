@@ -267,17 +267,31 @@
           class="user-change-key"
           ref="infoForm"
           :model="infoForm"
-          
           label-width="100px"
         >
+          <el-row :span="6"
+            ><div class="grid-content bg-purple-light">
+              <el-upload>
+                <el-avatar
+                  size="“50"
+                  :src="circleUrl"
+                  action="https://jsonplaceholder.typicode.com/posts/"
+                  :on-remove="handleRemove"
+                  :before-remove="beforeRemove"
+                ></el-avatar>
+              </el-upload></div
+          ></el-row>
+          <br />
+          <!-- <el-form-item lable="头像" style="display: flex"> </el-form-item> -->
+
           <el-form-item label="用户名：">{{ showUsername }}</el-form-item>
           <el-form-item label="昵称：">
             <el-input v-model="infoForm.nickname"></el-input>
           </el-form-item>
 
           <span>性别：</span>
-          <el-radio v-model="infoForm.sex" label="男" >男</el-radio>
-          <el-radio v-model="infoForm.sex" label="女" >女</el-radio>
+          <el-radio v-model="infoForm.sex" label="男">男</el-radio>
+          <el-radio v-model="infoForm.sex" label="女">女</el-radio>
           <br />
           <br />
           <el-button @click="handleCancel">取 消</el-button>
@@ -375,7 +389,7 @@ import {
 export default {
   data() {
     return {
-      values:"",
+      values: "",
       Username: "",
       nickName: "",
       uId: "",
@@ -389,6 +403,9 @@ export default {
       forgetDialogVisible: false,
       enNameDialogVisible: false,
       rechangePasswordDialogVisible: false,
+      circleUrl:
+        "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
+      sizeList: ["large", "medium", "small"],
       radio: "1",
       showUserMatter: null,
       form: {
@@ -503,8 +520,8 @@ export default {
             console.log(data);
             comeLogin(data).then((res) => {
               //所以此处打印的是用户状态信息
-                console.log(res.data);
-                localStorage.setItem("id",res.data.id)
+              console.log(res.data);
+              localStorage.setItem("id", res.data.id);
               if (res.code === 1000) {
                 loginToken(data).then(({ data }) => {
                   this.$message({
@@ -777,7 +794,7 @@ export default {
       });
     },
   },
- 
+
   mounted() {
     addEventListener("scroll", () => {
       let header = document.querySelector("header");

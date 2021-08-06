@@ -150,6 +150,7 @@ export default {
 /* } */
 
 .card {
+  height: 100px;
   background: linear-gradient(45deg, #eaccf7, #b2d5f8);
 }
 a {

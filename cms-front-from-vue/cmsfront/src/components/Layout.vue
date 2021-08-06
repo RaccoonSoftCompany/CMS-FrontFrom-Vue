@@ -255,7 +255,7 @@ body {
   border-radius: 10px;
   text-align: center;
   width: 100%;
-  height: 580px;
+  height: 530px;
   background: linear-gradient(45deg, #d4f6fc, #fadbfa);
   box-shadow: 5px 8px 5px rgb(221, 220, 220);
 }
@@ -400,7 +400,7 @@ a {
   justify-content: space-between;
   border: none !important;
   box-shadow: none !important;
-  margin-top: 5px;
+  /* margin-top: 5px; */
 }
 
 .rightSide .rank {

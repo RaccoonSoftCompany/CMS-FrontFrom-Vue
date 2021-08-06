@@ -1,6 +1,9 @@
 <template>
-  <div class="container">
-    <div class="card">
+  <!-- <div class="container"> -->
+    <div class="footermain">
+
+    </div>
+    <!-- <div class="card">
       <div class="imgBx">
         <img src="./img/二维码1.png" alt="" />
       </div>
@@ -35,8 +38,8 @@
         </p>
         <a href="#"><span>Read More</span></a>
       </div>
-    </div>
-  </div>
+    </div> -->
+  <!-- </div> -->
 </template>
 
 <script>
@@ -132,5 +135,10 @@ body{
 .container .card:hover .imgBx,
 .container .card:hover .contentBx{
   transform: scale(0.98);
+}
+.footermain{
+  width: 100%;
+  height: 200px;
+  border: rgb(12, 9, 9);
 }
 </style>
