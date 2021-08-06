@@ -38,6 +38,14 @@
                       alt=""
                     />
                     48小时阅读排行
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <a
+                      style="font-size: 12px; color: gray"
+                      v-if="articleList.length >= 5"
+                    >
+                      更多
+                    </a>
                   </h3>
                   <el-card
                     style="float: left; width: 100%"
@@ -60,8 +68,14 @@
                       src="../components/img/点赞推荐.png"
                       style="width: 24px; height: 24px"
                       alt=""
-                      
                     />10天点赞更多
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a
+                      style="float: ; font-size: 12px; color: gray"
+                      v-if="articleList.length >= 5"
+                    >
+                      更多
+                    </a>
                   </h3>
                   <el-card
                     style="float: left; width: 100%"
@@ -85,6 +99,13 @@
                       style="width: 24px; height: 24px"
                       alt=""
                     />10天评论排行
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a
+                      style="float: ; font-size: 12px; color: gray"
+                      v-if="articleList.length >= 5"
+                    >
+                      更多
+                    </a>
                   </h3>
 
                   <el-card
@@ -381,17 +402,15 @@ a {
   box-shadow: none !important;
   margin-top: 5px;
 }
-.rightSide:hover {
 
-}
 .rightSide .rank {
   width: 100%;
   float: left;
   /* border: 0.1px solid gray; */
   box-shadow: none;
 }
-.rank:hover{
-    box-shadow: 0px 1rem 2rem 0px rgba(48, 55, 66, 0.15);
+.rank:hover {
+  box-shadow: 0px 1rem 2rem 0px rgba(48, 55, 66, 0.15);
   transform: translate(0, -4px);
   transition-delay: 0s !important;
 }

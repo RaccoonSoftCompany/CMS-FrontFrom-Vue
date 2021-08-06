@@ -127,7 +127,7 @@ export default {};
 <style>
 .containers {
   margin: 0 auto;
-  width: 1000px;
+  width: 1200px;
   height: 700px;
   background-color: #fcd5e2;
 }
