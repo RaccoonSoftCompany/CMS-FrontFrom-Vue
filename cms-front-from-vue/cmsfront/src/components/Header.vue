@@ -6,6 +6,7 @@
         Raccoon
       </a>
       <ul>
+        <!-- <el-buttom @click="bat">打到</el-buttom> -->
         <li>
           <router-link :to="{ name: 'article' }">首页</router-link>
         </li>
@@ -24,12 +25,29 @@
           <el-button @click="login">登录</el-button>
           <el-button @click="register">注册</el-button>
         </div>
+
         <div v-else>
           <!--  下拉菜单-->
           <el-dropdown @command="handleCommand" class="drop"
             ><!--  绑定指令,在methods里定义-->
             <span class="el-dropdown-link">
-              <img src="../Images/银河护卫队-浣熊火箭48.jpg" />
+              <div></div>
+              <!-- <el-avater class="demo-type" :src="path + avaterImg" @error="errorHandler"> -->
+              <!-- <img
+                  
+                  style="width: 40px; height: 40px; border-radius: 50%"
+                /> -->
+              <!-- </el-avater> -->
+              <el-avatar
+                :size="40"
+                :src="path + avaterImg"
+                @error="errorHandler"
+              >
+                <img
+                  src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"
+                />
+              </el-avatar>
+              &nbsp;&nbsp;
               <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
               <span
                 class="uName"
@@ -273,13 +291,12 @@
             ><div class="grid-content bg-purple-light">
               <el-upload>
                 <el-avatar
-                  size="“50"
-                  :src="circleUrl"
+                  auto-upload="false"
+                  :src="path+avaterImg"
                   action="https://jsonplaceholder.typicode.com/posts/"
-                  :on-remove="handleRemove"
-                  :before-remove="beforeRemove"
                 ></el-avatar>
-              </el-upload></div
+              </el-upload>
+              <button slot="trigger"></button></div
           ></el-row>
           <br />
           <!-- <el-form-item lable="头像" style="display: flex"> </el-form-item> -->
@@ -383,15 +400,18 @@ import {
   forgetPasswordtoUsername,
   getMatters,
   changeUserInfos,
-  loginToken,
+  // loginToken,
 } from "../api/user";
 // import Cookies from "js-cookie";
 export default {
   data() {
     return {
+      path: "http://localhost:5000/",
+      avaterImg: localStorage.getItem("uImageUrl"),
       values: "",
       Username: "",
       nickName: "",
+      uImageUrl: "",
       uId: "",
       getProblemId: "",
       isLogin: true,
@@ -405,7 +425,7 @@ export default {
       rechangePasswordDialogVisible: false,
       circleUrl:
         "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
-      sizeList: ["large", "medium", "small"],
+      size: ["large", "medium", "small"],
       radio: "1",
       showUserMatter: null,
       form: {
@@ -499,6 +519,12 @@ export default {
   },
 
   methods: {
+    // bat() {
+    //   console.log(this.path);
+    //   console.log(this.avaterImg);
+    //   this.path += this.avaterImg;
+    //   console.log(this.path);
+    // },
     // 登录按钮
     login() {
       this.loginDialogVisible = true;
@@ -519,29 +545,33 @@ export default {
             };
             console.log(data);
             comeLogin(data).then((res) => {
-              //所以此处打印的是用户状态信息
               console.log(res.data);
-              localStorage.setItem("id", res.data.id);
               if (res.code === 1000) {
-                loginToken(data).then(({ data }) => {
-                  this.$message({
-                    message: "登陆成功！请移动至前往个人信息修改个人昵称👉",
-                    type: "success",
-                  });
-                  this.infoForm.nickname = res.data.nickName;
-                  this.Username = res.data.uName;
-                  this.nickName = res.data.nickName;
-                  this.uId = res.data.id;
-                  setToken(data.token, data.refreshToken);
-                  console.log(data);
-                  this.isLogin = false;
-                  this.loginDialogVisible = false;
-                  this.$router.push("/");
+                this.$message({
+                  message: "登陆成功！请移动至前往个人信息修改个人昵称👉",
+                  type: "success",
                 });
+                localStorage.setItem("uImageUrl", res.data.uImageUrl);
+
+                this.avaterImg = localStorage.getItem("uImageUrl");
+                localStorage.setItem("id", res.data.id);
+                setToken(res.data.token, res.data.refreshToken);
+
+                this.infoForm.nickname = res.data.nickName;
+                this.Username = res.data.uName;
+                this.nickName = res.data.nickName;
+                this.uId = res.data.id;
+
+                this.isLogin = false;
+                this.loginDialogVisible = false;
+                // });
                 loginStatus(data.UName, data.Upassword);
               } else {
                 this.$message.error("用户名或密码错误,请重新尝试！");
               }
+              //所以此处打印的是用户状态信息
+              console.log(res.data);
+              console.log(res.data.uImageUrl);
             });
           }
         }
@@ -738,6 +768,7 @@ export default {
       removeLoginStatus();
       this.isLogin = true;
       removeToken();
+      localStorage.setItem("uImageUrl", null);
       this.$router.push("/");
       // window.location.replace("/");
     },
@@ -792,6 +823,10 @@ export default {
         this.options = res.data;
         console.log(res);
       });
+    },
+    // 图标加载失败
+    errorHandler() {
+      return true;
     },
   },
 
@@ -895,6 +930,7 @@ header ul li a {
   font-weight: 500px;
   transition: 0.5s;
 }
+
 /* .banner {
   position: relative;
   width: 100%;

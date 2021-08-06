@@ -138,7 +138,7 @@ body{
 }
 .footermain{
   width: 100%;
-  height: 200px;
+  height: 100px;
   border: rgb(12, 9, 9);
 }
 </style>

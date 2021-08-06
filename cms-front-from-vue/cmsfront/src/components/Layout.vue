@@ -255,7 +255,7 @@ body {
   border-radius: 10px;
   text-align: center;
   width: 100%;
-  height: 530px;
+  height: 560px;
   background: linear-gradient(45deg, #d4f6fc, #fadbfa);
   box-shadow: 5px 8px 5px rgb(221, 220, 220);
 }

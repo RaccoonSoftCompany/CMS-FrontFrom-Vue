@@ -122,6 +122,7 @@
             :key="item.id"
           >
             <div class="articleArr">
+              <el-avatar :size="size" :src="circleUrl"></el-avatar>
               {{ item.uNickName }}：&nbsp;&nbsp;&nbsp;{{
                 item.talkText
               }}&nbsp;&nbsp;&nbsp;&nbsp;
@@ -366,6 +367,10 @@ export default {
 </script>
 
 <style scoped>
+.el-page-header{
+  width: 100% !important;
+  float: left !important;
+}
 .container {
   overflow: hidden;
   border: none;
@@ -486,9 +491,13 @@ h4 {
   height: 22px;
 }
 .atitle{
-  width: 300px !important;
-  margin-right: 50px !important;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: left !important;
+  width: 200px !important;
+  /* margin-right: 500px !important; */
+  /* text-align: center; */
 }
 .middle {
   border: none;
