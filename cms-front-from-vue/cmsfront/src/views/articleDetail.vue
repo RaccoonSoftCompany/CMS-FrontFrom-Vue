@@ -122,7 +122,9 @@
             :key="item.id"
           >
             <div class="articleArr">
-              <el-avatar :size="size" :src="circleUrl"></el-avatar>
+              <el-avatar
+                :src="`http://localhost:5000/`+item.uImageURL"
+              ></el-avatar>
               {{ item.uNickName }}：&nbsp;&nbsp;&nbsp;{{
                 item.talkText
               }}&nbsp;&nbsp;&nbsp;&nbsp;
@@ -153,6 +155,7 @@ import {
   deleteComment,
   getArticleTalks,
   isArticleAPraises,
+  // getAvater
 } from "../api/article";
 import { comeLogin, loginToken, addRead, addPraises } from "../api/user";
 import { setToken, loginStatus } from "../utils/auth";
@@ -164,6 +167,7 @@ export default {
       isId: localStorage.getItem("id"),
       isArticleId: "",
       activeClass: false,
+      commentAvater: [],
       articleDetail: {
         aReadCount: "",
       },
@@ -361,13 +365,16 @@ export default {
       console.log(res.data);
       this.activeClass = res.data.isPraise;
     });
+    // getAvater().then(res=>{
+    //   console.log(res);
+    // })
   },
   computed: {},
 };
 </script>
 
 <style scoped>
-.el-page-header{
+.el-page-header {
   width: 100% !important;
   float: left !important;
 }
@@ -490,7 +497,7 @@ h4 {
   width: 24px;
   height: 22px;
 }
-.atitle{
+.atitle {
   display: flex;
   align-items: center;
   justify-content: center;

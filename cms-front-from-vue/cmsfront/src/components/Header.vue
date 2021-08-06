@@ -38,15 +38,15 @@
                   style="width: 40px; height: 40px; border-radius: 50%"
                 /> -->
               <!-- </el-avater> -->
-              <el-avatar
+              <img
+                style="width: 45px; height: 45px; border-radius: 50%"
                 :size="40"
                 :src="path + uImageUrl"
-                @error="errorHandler"
-              >
-                <img
+              />
+              <!-- <img
                   src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"
-                />
-              </el-avatar>
+                /> -->
+
               &nbsp;&nbsp;
               <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
               <span
@@ -549,12 +549,13 @@ export default {
       localStorage.removeItem("uImageUrl");
       localStorage.setItem("uImageUrl", newImg);
       this.uImageUrl = newImg;
+      this.$refs.upload.clearFiles();
     },
     submitUpload() {
-      if (this.fileList.length <= 0) {
+      if (this.fileList==0) {
         this.$message.info("请选择图片");
       }
-
+      
       this.$refs.upload.submit();
     },
     handleRemove(file, imageUrl) {
@@ -592,12 +593,12 @@ export default {
               console.log(res.data);
               if (res.code === 1000) {
                 this.$message({
-                  message: "登陆成功！请移动至前往个人信息修改个人昵称👉",
+                  message: "登陆成功！请修改您的个人信息👉",
                   type: "success",
                 });
                 localStorage.setItem("uImageUrl", res.data.uImageUrl);
 
-                this.uImageUrl = localStorage.getItem("uImageUrl");
+                this.uImageUrl = res.data.uImageUrl;
                 localStorage.setItem("id", res.data.id);
                 setToken(res.data.token, res.data.refreshToken);
 
@@ -779,8 +780,8 @@ export default {
           getUserInfos(this.uId).then((res) => {
             this.infoForm.sex = res.data.sex;
 
-            localStorage.setItem("uImageUrl", res.data.imageURL);
-            // this.uImageUrl = res.data.imageURL
+            // localStorage.setItem("uImageUrl", res.data.imageURL);
+            this.uImageUrl = res.data.imageURL;
             console.log(res);
           });
 
@@ -813,6 +814,7 @@ export default {
         });
         this.nickName = data.NickName;
         this.$router.push("/");
+
         this.infoDialogVisible = false;
         console.log(res);
       });
@@ -999,7 +1001,11 @@ header.sticky ul li a {
 .uName {
   font-family: fantasy;
   font-size: 15px;
+  cursor: pointer;
   color: #ffffff;
+}
+.dropdown{
+  cursor: pointer;
 }
 .el-dropdown-link {
   display: flex !important;

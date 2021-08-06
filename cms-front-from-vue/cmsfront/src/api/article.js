@@ -39,3 +39,8 @@ export function TheTenPraiseCount() {
 export function TheTenTalkCount() {
     return request.get('/articles/TheTenTalkCount')
 }
+
+// 获取文章详情页评论用户头像
+export function  getAvater() {
+    return request.get('ArticleTalks')
+}
