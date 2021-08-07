@@ -126,7 +126,7 @@
           >
             <div class="articleArr">
               <el-avatar
-                :src="`http://localhost:5000/` + item.uImageURL"
+                :src="`http://cmsapi.ssffyy.com:8090/` + item.uImageURL"
               ></el-avatar>
               {{ item.uNickName }}：&nbsp;&nbsp;&nbsp;{{
                 item.talkText
@@ -167,7 +167,7 @@ export default {
     return {
       articleId: this.$route.query.articleId,
       loginDialogVisible: false,
-      path: "http://localhost:5000/",
+      path: "http://cmsapi.ssffyy.com:8090/",
       isId: localStorage.getItem("id"),
       isArticleId: "",
       activeClass: false,

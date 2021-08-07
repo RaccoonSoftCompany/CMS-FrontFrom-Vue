@@ -294,7 +294,7 @@
                 <el-upload
                   class="avatar-uploader"
                   ref="upload"
-                  :action="'http://localhost:5000/UploadFile/userimage/' + uId"
+                  :action="'http://cmsapi.ssffyy.com:8090/UploadFile/userimage/' + uId"
                   :on-preview="handlePreview"
                   :on-remove="handleRemove"
                   :file-list="fileList"
@@ -429,7 +429,7 @@ import {
 export default {
   data() {
     return {
-      path: "http://localhost:5000/",
+      path: "http://cmsapi.ssffyy.com:8090/",
       avaterImg: "",
       fileList: [],
       values: "",

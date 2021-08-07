@@ -58,7 +58,7 @@ import { getArticles } from "../api/user";
 export default {
   data() {
     return {
-      path:"http://localhost:5000/",
+      path:"http://cmsapi.ssffyy.com:8090/",
       bannerHeight: "",
       screenWidth: 0,
       list: [],
