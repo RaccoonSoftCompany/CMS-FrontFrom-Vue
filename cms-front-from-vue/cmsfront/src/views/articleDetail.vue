@@ -54,6 +54,9 @@
           </div>
         </div>
         <el-card class="middle">
+          <el-avatar
+            :src="`http://localhost:5000/` + articleDetail.uImageURL"
+          ></el-avatar>
           &nbsp; &nbsp;
           {{ articleDetail.nickName }}
           &nbsp;&nbsp;&nbsp;&nbsp;
@@ -123,7 +126,7 @@
           >
             <div class="articleArr">
               <el-avatar
-                :src="`http://localhost:5000/`+item.uImageURL"
+                :src="`http://localhost:5000/` + item.uImageURL"
               ></el-avatar>
               {{ item.uNickName }}：&nbsp;&nbsp;&nbsp;{{
                 item.talkText
