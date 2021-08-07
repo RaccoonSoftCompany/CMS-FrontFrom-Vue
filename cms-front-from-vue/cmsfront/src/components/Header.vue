@@ -14,9 +14,9 @@
         <li>
           <router-link :to="{ name: 'about' }">关于</router-link>
         </li>
-        <li>
+        <!-- <li>
           <a href="#">服务</a>
-        </li>
+        </li> -->
         <div v-if="isLogin">
           <!-- <div class="wrapper-inner-tab-backgrounds-second">
             <div class="sim-button button27" @click="login">登录</div>
