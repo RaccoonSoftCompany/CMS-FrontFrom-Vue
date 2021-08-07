@@ -54,9 +54,7 @@
           </div>
         </div>
         <el-card class="middle">
-          <el-avatar
-            :src="`http://localhost:5000/` + articleDetail.uImageURL"
-          ></el-avatar>
+          <img :src="atp" style="width:20px;height:20px;border-radius:50%;" />
           &nbsp; &nbsp;
           {{ articleDetail.nickName }}
           &nbsp;&nbsp;&nbsp;&nbsp;
@@ -167,12 +165,14 @@ export default {
     return {
       articleId: this.$route.query.articleId,
       loginDialogVisible: false,
+      path: "http://localhost:5000/",
       isId: localStorage.getItem("id"),
       isArticleId: "",
       activeClass: false,
       commentAvater: [],
       articleDetail: {
         aReadCount: "",
+        uImageURL: "",
       },
       articleComment: [],
       inputData: {
@@ -352,6 +352,7 @@ export default {
         articleId: res.data[0].id,
       };
       console.log(data);
+      this.articleDetail.uImageURL = res.data[0].uImageURL;
       addRead(data).then((res) => {
         if (res.code === 1000) {
           this.articleDetail.aReadCount += 1;
@@ -372,7 +373,14 @@ export default {
     //   console.log(res);
     // })
   },
-  computed: {},
+  computed: {
+    atp() {
+      let s = this.path;
+      let w = this.articleDetail.uImageURL;
+      console.log(s + w);
+      return s + w;
+    },
+  },
 };
 </script>
 

@@ -23,7 +23,7 @@
       <el-card shadow="hover" class="card"
         ><img src="../Images/bxs-hot.png" alt="" />
         <!-- <a href="http://localhost:8081/news"><span>新闻时讯</span></a> -->
-        <router-link :to="{ name: 'news' }">新闻时讯</router-link>
+        <router-link :to="{ name: 'article' }">新闻时讯</router-link>
       </el-card>
     </el-col>
     <el-col :span="6">
