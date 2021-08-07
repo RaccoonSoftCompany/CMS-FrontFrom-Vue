@@ -42,11 +42,10 @@
     <el-card :data="articleDetail" class="articleAction">
       <el-card class="incard">
         <div class="index">
-          <div>
-            <router-link :to="{ path: '/article' }" class="back">
-              <el-page-header> </el-page-header>
-            </router-link>
-          </div>
+          <router-link :to="{ path: '/article' }" class="back">
+            <el-page-header> </el-page-header>
+          </router-link>
+
           <div style="atitle">
             <br />
             <h1>{{ articleDetail.aTitle }}</h1>

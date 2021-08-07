@@ -4,7 +4,7 @@ import { getToken } from '../utils/auth'
 
 const instance = axios.create({
     // 指定axios访问的URL
-    baseURL: 'http://localhost:5000/',
+    baseURL: 'http://cmsapi.ssffyy.com:8090/',
     // 在超时前，所有请求都会等待 5 秒
     timeout: 5000
 

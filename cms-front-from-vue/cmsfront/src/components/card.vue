@@ -1,6 +1,6 @@
 <template>
   <div class="box-card">
-    <div class="scrollcard"> 
+    <div class="scrollcard">
       <el-carousel
         :interval="2500"
         arrow="always"
@@ -8,12 +8,14 @@
       >
         <el-carousel-item v-for="item in imgUrls" :key="item.id">
           <el-row>
+            <router-link>
             <img
               ref="bannerHeight"
-              :src="item.idView"
+              :src="path+ item.aImageUrl"
               class="bannerImg"
               @load="imgLoad"
             />
+            </router-link>
           </el-row>
         </el-carousel-item>
       </el-carousel>
@@ -52,19 +54,15 @@
 </template>
 
 <script>
+import { getArticles } from "../api/user";
 export default {
   data() {
     return {
+      path:"http://localhost:5000/",
       bannerHeight: "",
       screenWidth: 0,
       list: [],
-      imgUrls: [
-        { id: 0, idView: require("./img/1.png") },
-        { id: 1, idView: require("./img/2.png") },
-        { id: 2, idView: require("./img/3.png") },
-        { id: 3, idView: require("./img/4.png") },
-        { id: 4, idView: require("./img/5.png") },
-      ],
+      imgUrls: [],
     };
   },
   methods: {
@@ -85,6 +83,11 @@ export default {
       },
       false
     );
+    getArticles().then((res) => {
+      this.imgUrls = res.data
+      
+      console.log(res.data);
+    });
   },
 };
 </script>

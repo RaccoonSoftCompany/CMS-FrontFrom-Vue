@@ -552,9 +552,7 @@ export default {
       this.$refs.upload.clearFiles();
     },
     submitUpload() {
-      if (this.fileList==0) {
-        this.$message.info("请选择图片");
-      }
+     
       
       this.$refs.upload.submit();
     },
@@ -877,12 +875,12 @@ export default {
       // }
     },
     // 获取密保问题
-    fetchMatters() {
-      getMatters().then((res) => {
-        this.options = res.data;
-        console.log(res);
-      });
-    },
+    // fetchMatters() {
+    //   getMatters().then((res) => {
+    //     this.options = res.data;
+    //     console.log(res);
+    //   });
+    // },
     // 图标加载失败
     errorHandler() {
       return true;
@@ -895,8 +893,8 @@ export default {
       header.classList.toggle("sticky", window.scrollY > 0);
     });
     getMatters().then((res) => {
-      this.options = res.data;
-      // console.log(res.data);
+      this.options = res.data.data;
+      console.log(res.data);
     });
   },
   computed: {
