@@ -17,7 +17,7 @@
         :key="item.value"
         style="margin-top: 1px"
       >
-        <img :src="`http://cmsapi.ssffyy.com:8090/`+item.aImageUrl" alt="" style="float: left;width:230px;height:200px;border-radius:5%" />
+        <img v-if="item.aImageUrl" :src="`http://cmsapi.ssffyy.com:8090/`+item.aImageUrl" alt="" style="float: left;width:230px;height:200px;border-radius:5%" />
         <br />
 
         <h1>

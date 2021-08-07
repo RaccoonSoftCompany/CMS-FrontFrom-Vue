@@ -8,14 +8,12 @@
       >
         <el-carousel-item v-for="item in imgUrls" :key="item.id">
           <el-row>
-            <router-link>
             <img
               ref="bannerHeight"
-              :src="path+ item.aImageUrl"
+              :src="path + item.aImageUrl"
               class="bannerImg"
               @load="imgLoad"
             />
-            </router-link>
           </el-row>
         </el-carousel-item>
       </el-carousel>
@@ -58,14 +56,24 @@ import { getArticles } from "../api/user";
 export default {
   data() {
     return {
-      path:"http://cmsapi.ssffyy.com:8090/",
+      path: "http://cmsapi.ssffyy.com:8090/",
       bannerHeight: "",
       screenWidth: 0,
       list: [],
-      imgUrls: [],
+      imgUrls: [
+        { idView: require("./img/国乒1.jpg") },
+        { idView: require("./img/国乒2.jpg") },
+        { idView: require("./img/浣熊1.jpg") },
+        { idView: require("./img/浣熊2.jpg") },
+        { idView: require("./img/浣熊3.jpg") },
+      ],
     };
   },
   methods: {
+    img() {
+      return this.path + this.imgUrls;
+    },
+
     imgLoad() {
       this.$nextTick(() => {
         this.bannerHeight = this.$refs.bannerHeight[0];
@@ -84,8 +92,7 @@ export default {
       false
     );
     getArticles().then((res) => {
-      this.imgUrls = res.data
-      
+      this.imgUrls = res.data;
       console.log(res.data);
     });
   },

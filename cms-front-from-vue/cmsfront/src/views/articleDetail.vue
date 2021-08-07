@@ -54,7 +54,7 @@
         </div>
         <el-card class="middle">
           <img
-            :src="atp"
+            :src="resultImg"
             style="width: 20px; height: 20px; border-radius: 50%"
           />
           &nbsp; &nbsp;
@@ -258,7 +258,7 @@ export default {
     },
     getParams() {
       //   let routerParams = this.$route.query.articleId;
-      console.log(this.articleId);
+      // console.log(this.articleId);
     },
     // 删除评论
     remove(talkId, index) {
@@ -339,13 +339,13 @@ export default {
   created() {
     this.getParams();
   },
-  mounted() {
+ async mounted() {
     getArticleTalks(this.articleId).then((res) => {
       console.log("我是文章Id:" + this.articleId);
-      console.log(res.data);
+      // console.log(res.data);
       this.articleComment = res.data;
 
-      console.log(this.articleComment);
+      // console.log(this.articleComment);
     });
     getArticleDetail(this.articleId).then((res) => {
       this.articleDetail = res.data[0];
@@ -353,22 +353,22 @@ export default {
         userId: this.isId,
         articleId: res.data[0].id,
       };
-      console.log(data);
+      // console.log(data);
       this.articleDetail.uImageURL = res.data[0].uImageURL;
       addRead(data).then((res) => {
         if (res.code === 1000) {
           this.articleDetail.aReadCount += 1;
         }
-        console.log(data);
-        console.log(res);
+        // console.log(data);
+        // console.log(res);
         // this.articlelist[index].aReadCount += 1;
       });
-      console.log(this.articleDetail);
+      // this.resultImg();
     });
     let uId = this.isId;
     let aId = this.articleId;
     isArticleAPraises(uId, aId).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       this.activeClass = res.data.isPraise;
     });
     // getAvater().then(res=>{
@@ -376,13 +376,15 @@ export default {
     // })
   },
   computed: {
-    atp() {
-      let s = this.path;
-      let w = this.articleDetail.uImageURL;
-      console.log(s + w);
-      return s + w;
+    resultImg() {
+      let baseUrl = this.path;
+      let imgUrl = this.articleDetail.uImageURL;
+      console.log(imgUrl);
+      console.log(baseUrl + imgUrl);
+      return baseUrl + imgUrl;
     },
   },
+ 
 };
 </script>
 

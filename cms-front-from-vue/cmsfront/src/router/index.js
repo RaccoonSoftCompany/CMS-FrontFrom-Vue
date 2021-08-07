@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
-// import Header from '../components/Header'
 Vue.use(VueRouter)
 
 let router = new VueRouter({
     mode: 'history',
+    base: '/www/wwwroot/cms.blackdragonlee.com',
     routes
 })
 const originalPush = VueRouter.prototype.push
