@@ -825,7 +825,8 @@ export default {
       removeLoginStatus();
       this.isLogin = true;
       removeToken();
-      localStorage.setItem("uImageUrl", null);
+      localStorage.clear();
+      // localStorage.setItem("uImageUrl", null);
       this.$router.push("/");
       // window.location.replace("/");
     },
@@ -859,6 +860,7 @@ export default {
                   this.changeDialogVisible = false;
                   removeToken();
                   removeLoginStatus();
+                  localStorage.clear();
                   this.isLogin = true;
                   this.$router.push("/");
                   this.$message.success("修改成功,请重新登录!");

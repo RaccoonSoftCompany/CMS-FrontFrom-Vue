@@ -54,7 +54,10 @@
           </div>
         </div>
         <el-card class="middle">
-          <img :src="atp" style="width:20px;height:20px;border-radius:50%;" />
+          <img
+            :src="atp"
+            style="width: 20px; height: 20px; border-radius: 50%"
+          />
           &nbsp; &nbsp;
           {{ articleDetail.nickName }}
           &nbsp;&nbsp;&nbsp;&nbsp;
@@ -158,7 +161,7 @@ import {
   isArticleAPraises,
   // getAvater
 } from "../api/article";
-import { comeLogin, loginToken, addRead, addPraises } from "../api/user";
+import { comeLogin, addRead, addPraises } from "../api/user";
 import { setToken, loginStatus } from "../utils/auth";
 export default {
   data() {
@@ -288,36 +291,36 @@ export default {
               console.log(res.data);
               localStorage.setItem("id", res.data.id);
               if (res.code === 1000) {
-                loginToken(data).then(({ data }) => {
-                  this.$message({
-                    message: "登陆成功！",
-                    type: "success",
-                  });
-                  this.Username = res.data.uName;
-                  setToken(data.token, data.refreshToken);
-                  console.log(data);
-                  this.loginDialogVisible = false;
-                  let userID = localStorage.getItem("id");
-                  let articleId = this.isArticleId;
-                  let commentData = {
-                    userId: userID,
-                    articleId: articleId,
-                    atText: this.inputData.input,
-                  };
-                  console.log(commentData);
-                  addComment(commentData).then((res) => {
-                    if (res.code === 1000) {
-                      console.log(res.data);
-                      this.articleComment.push(res.data);
-                      console.log(this.articleComment);
-
-                      this.$message.success("评论成功!");
-                      //   this.inputData = { brand_right: 0 };
-                      this.$refs["inputData"].resetFields();
-                    }
-                  });
-                  //   this.$router.push("/");
+                // loginToken(data).then(({ data }) => {
+                this.$message({
+                  message: "登陆成功！",
+                  type: "success",
                 });
+                this.Username = res.data.uName;
+                setToken(data.token, data.refreshToken);
+                console.log(data);
+                this.loginDialogVisible = false;
+                let userID = localStorage.getItem("id");
+                let articleId = this.isArticleId;
+                let commentData = {
+                  userId: userID,
+                  articleId: articleId,
+                  atText: this.inputData.input,
+                };
+                console.log(commentData);
+                addComment(commentData).then((res) => {
+                  if (res.code === 1000) {
+                    console.log(res.data);
+                    this.articleComment.push(res.data);
+                    console.log(this.articleComment);
+
+                    this.$message.success("评论成功!");
+                    //   this.inputData = { brand_right: 0 };
+                    this.$refs["inputData"].resetFields();
+                  }
+                });
+                //   this.$router.push("/");
+                // });
                 loginStatus(data.UName, data.Upassword);
               } else {
                 this.$message.error("用户名或密码错误,请重新尝试！");
