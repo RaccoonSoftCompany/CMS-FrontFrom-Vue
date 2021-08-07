@@ -17,7 +17,7 @@
         :key="item.value"
         style="margin-top: 1px"
       >
-        <img src="./img/二维码1.png" alt="" style="float: left" />
+        <img :src="`http://localhost:5000/`+item.aImageUrl" alt="" style="float: left;width:230px;height:200px;border-radius:5%" />
         <br />
 
         <h1>
