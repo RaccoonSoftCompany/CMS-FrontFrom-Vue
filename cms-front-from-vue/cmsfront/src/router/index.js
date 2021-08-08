@@ -5,9 +5,11 @@ Vue.use(VueRouter)
 
 let router = new VueRouter({
     mode: 'history',
-    base: '/www/wwwroot/cms.blackdragonlee.com',
+    base: process.env.BASE_URL,
     routes
 })
+
+
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
 

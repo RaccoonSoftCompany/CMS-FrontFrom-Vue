@@ -101,6 +101,8 @@
         :rules="rules"
         label-width="100px"
         center
+        status-icon
+        inline-message
         title="登录"
       >
         <h1 style="font-size: 35px">Login</h1>
@@ -140,6 +142,7 @@
         :rules="forgetrules"
         label-width="100px"
         center
+        inline-message
         title="ComfirmName"
       >
         <br />
@@ -167,6 +170,7 @@
         :rules="forgetAnswerrules"
         label-width="100px"
         center
+        inline-message
         title="ComfirmName"
       >
         <h2>密保问题:</h2>
@@ -223,6 +227,7 @@
           :model="registerform"
           :rules="registerformrules"
           label-width="100px"
+          inline-message
         >
           <el-form-item label="用户名：" prop="username">
             <el-input
@@ -291,6 +296,7 @@
           class="user-change-key"
           ref="infoForm"
           :model="infoForm"
+          inline-message
           label-width="100px"
         >
           <el-row :span="6"
@@ -377,6 +383,9 @@
           :model="changeForm"
           :rules="changeFormrules"
           label-width="100px"
+          inline-message
+          validate-on-rule-change
+          @close="resetChangeForm"
         >
           <el-form-item label="旧密码" prop="oldpassword">
             <el-input
@@ -550,9 +559,12 @@ export default {
   },
 
   methods: {
+    resetChangeForm() {
+      this.$refs.changeForm.resetFields();
+    },
     success(file) {
       let newImg = file.data;
-      console.log(file);
+      // console.log(file);
       localStorage.removeItem("uImageUrl");
       localStorage.setItem("uImageUrl", newImg);
       this.uImageUrl = newImg;
@@ -593,7 +605,7 @@ export default {
             };
             // console.log(data);
             comeLogin(data).then((res) => {
-              console.log(res.data);
+              // console.log(res.data);
               if (res.code === 1000) {
                 this.$message({
                   message: "登陆成功！请修改您的个人信息👉",
@@ -703,7 +715,7 @@ export default {
             };
             // console.log(data);
             forgetPasswordtoUsername(data.UName).then((res) => {
-              console.log(res);
+              // console.log(res);
               this.getProblemId = res.data.uId;
               if (res.code === 1000) {
                 this.showUserMatter = this.Username;
@@ -719,7 +731,7 @@ export default {
     },
     // 忘记密码第二步
     forgetNexttwo(formName) {
-      console.log(formName);
+      // console.log(formName);
 
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -730,14 +742,14 @@ export default {
             this.AnswerForm.npassword === this.AnswerForm.repassword
           ) {
             let uId = this.getProblemId;
-            console.log(uId);
+            // console.log(uId);
             let data = {
               MKey: this.AnswerForm.answer,
               Upassword: this.AnswerForm.npassword,
               reUpassword: this.AnswerForm.repassword,
             };
 
-            console.log(data);
+            // console.log(data);
             forgetPassword(uId, data).then((res) => {
               if (res.code === 1000) {
                 this.enNameDialogVisible = false;
@@ -755,7 +767,7 @@ export default {
                   this.$refs.AnswerForm.resetFields();
                 });
               }
-              console.log(res);
+              // console.log(res);
             });
           } else {
             this.$message.error("两次密码不一致！");
@@ -785,21 +797,28 @@ export default {
 
             // localStorage.setItem("uImageUrl", res.data.imageURL);
             this.uImageUrl = res.data.imageURL;
-            console.log(res);
+            // console.log(res);
           });
+          break;
         case "change":
-          const confirmResult = await this.$confirm("确定切换用户？", "提示", {
-            confirmButtonText: "确定",
-            cancelButtonText: "取消",
-            type: "warning",
-          }).catch((err) => err);
-          if (confirmResult === "confirm") {
-            this.centerDialogVisible = false;
-            removeLoginStatus();
-            this.isLogin = true;
-            removeToken();
-            localStorage.clear();
-            this.loginDialogVisible = true;
+          {
+            const confirmResult = await this.$confirm(
+              "确定切换用户？",
+              "提示",
+              {
+                confirmButtonText: "确定",
+                cancelButtonText: "取消",
+                type: "warning",
+              }
+            ).catch((err) => err);
+            if (confirmResult === "confirm") {
+              this.centerDialogVisible = false;
+              removeLoginStatus();
+              this.isLogin = true;
+              removeToken();
+              localStorage.clear();
+              this.loginDialogVisible = true;
+            }
           }
           break;
         case "edit":
@@ -830,10 +849,10 @@ export default {
         NickName: this.infoForm.nickname,
         Sex: this.infoForm.sex,
       };
-      console.log(data);
-      console.log(id);
-      changeUserInfos(id, data).then((res) => {
-        console.log(res);
+      // console.log(data);
+      // console.log(id);
+      changeUserInfos(id, data).then(() => {
+        // console.log(res);
         this.$message({
           message: "更新成功!",
           type: "success",
@@ -842,7 +861,7 @@ export default {
         this.$router.push("/");
 
         this.infoDialogVisible = false;
-        console.log(res);
+        // console.log(res);
       });
     },
     // 确认注销
@@ -858,19 +877,29 @@ export default {
     },
     // 登陆成功修改密码
     handleChange(formName) {
-      this.$nextTick(() => {
-        this.$refs.form.resetFields(); //等弹窗里的form表单的dom渲染完在执行this.$refs.staffForm.resetFields()，去除验证
-      });
-      console.log(formName);
-      console.log(this.form);
+      // this.$nextTick(() => {
+      //   this.$refs.form.resetFields(); //等弹窗里的form表单的dom渲染完在执行this.$refs.staffForm.resetFields()，去除验证
+      // });
+      // console.log(formName);
+      console.log(this.changeForm);
+
+      let pwd = localStorage.getItem("password");
+
       this.form.id = this.uId;
+
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          if (this.changeForm.oldpassword === this.changeForm.newpassword) {
+          if (
+            this.changeForm.oldpassword === this.changeForm.newpassword &&
+            this.changeForm.oldpassword === this.changeForm.comfirmpassword
+          ) {
             this.$message.error("原密码不能与新密码相同");
-          }
-          if (this.changeForm.newpassword != this.changeForm.comfirmpassword) {
+          } else if (
+            this.changeForm.newpassword != this.changeForm.comfirmpassword
+          ) {
             this.$message.error("确认密码与新密码不一致");
+          } else if (this.changeForm.oldpassword != pwd) {
+            this.$message.error("原密码错误,请确认后重试!");
           } else {
             this.$confirm("确认修改吗?", "提示", {}).then(() => {
               let params = {
@@ -890,7 +919,8 @@ export default {
                   this.isLogin = true;
                   this.$router.push("/");
                   this.$message.success("修改成功,请重新登录!");
-                } else if (res.code === 1118) {
+                  this.$refs.changeForm.resetFields();
+                } else if (res.code === 1115) {
                   this.$message.error("原密码错误,请确认后重试");
                 } else {
                   this.$message.error("网络错误!");
@@ -922,7 +952,7 @@ export default {
     });
     getMatters().then((res) => {
       this.options = res.data.data;
-      console.log(res.data);
+      // console.log(res.data);
     });
   },
   computed: {

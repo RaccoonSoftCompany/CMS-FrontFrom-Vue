@@ -200,28 +200,28 @@ export default {
   componnent: {},
   props: ["id"],
   methods: {
-    addStyleOrGetDate(e) {
+    addStyleOrGetDate() {
       let data = {
         userId: this.isId,
         articleId: this.articleId,
       };
-      console.log(data);
+      // console.log(data);
       if (data.userId == null) {
         this.$message.info("请回到首页登陆后重试!");
       } else {
         addPraises(data).then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.code === 1000) {
             this.activeClass = true;
           } else if (res.code === 6666) {
             this.activeClass = false;
           }
         });
-        console.log(e);
+        // console.log(e);
         //获取事件的ID 值
         // //把ID 值 赋给  activeClass
-        var onlyId = e.currentTarget.id;
-        console.log(onlyId);
+        // var onlyId = e.currentTarget.id;
+        // console.log(onlyId);
       }
     },
 
@@ -231,22 +231,22 @@ export default {
 
       let userID = localStorage.getItem("id");
       this.isId = userID;
-      console.log(userID);
+      // console.log(userID);
       //   let articleDetailId= this.isArticleId;
       if (userID != null) {
-        console.log(userID);
+        // console.log(userID);
         // console.log(articleDetailId);
         let data = {
           userId: userID,
           articleId: this.articleId,
           atText: this.inputData.input,
         };
-        console.log(data);
+        // console.log(data);
         addComment(data).then((res) => {
           if (res.code === 1000) {
-            console.log(res.data);
+            // console.log(res.data);
             this.articleComment.push(res.data);
-            console.log(this.articleComment);
+            // console.log(this.articleComment);
             this.$message.success("评论成功!");
             this.$refs["inputData"].resetFields();
           }
@@ -262,7 +262,7 @@ export default {
     },
     // 删除评论
     remove(talkId, index) {
-      console.log(talkId);
+      // console.log(talkId);
       deleteComment(talkId).then((res) => {
         if (res.code === 1000) {
           this.articleComment.splice(index, 1);
@@ -270,7 +270,7 @@ export default {
         } else {
           this.$message.error("网络错误!");
         }
-        console.log(res);
+        // console.log(res);
       });
     },
     //登录请求
@@ -284,10 +284,10 @@ export default {
               UName: this.form.username,
               Upassword: this.form.password,
             };
-            console.log(data);
+            // console.log(data);
             comeLogin(data).then((res) => {
               //所以此处打印的是用户状态信息
-              console.log(res.data);
+              // console.log(res.data);
               localStorage.setItem("id", res.data.id);
               if (res.code === 1000) {
                 // loginToken(data).then(({ data }) => {
@@ -297,7 +297,7 @@ export default {
                 });
                 this.Username = res.data.uName;
                 setToken(data.token, data.refreshToken);
-                console.log(data);
+                // console.log(data);
                 this.loginDialogVisible = false;
                 let userID = localStorage.getItem("id");
                 let articleId = this.isArticleId;
@@ -309,7 +309,7 @@ export default {
                 console.log(commentData);
                 addComment(commentData).then((res) => {
                   if (res.code === 1000) {
-                    console.log(res.data);
+                    // console.log(res.data);
                     this.articleComment.push(res.data);
                     console.log(this.articleComment);
 
