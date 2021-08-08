@@ -211,15 +211,15 @@ export default {
     // });
     TheFirstReadCount().then((res) => {
       this.articleList = res.data;
-      console.log(res);
+      // console.log(res);
     });
     TheTenPraiseCount().then((res) => {
       this.praiseList = res.data;
-      console.log(res);
+      // console.log(res);
     });
     TheTenTalkCount().then((res) => {
       this.commentList = res.data;
-      console.log(res);
+      // console.log(res);
     });
   },
   // mounted() {

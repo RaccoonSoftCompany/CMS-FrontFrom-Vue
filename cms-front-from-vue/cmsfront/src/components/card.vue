@@ -93,7 +93,7 @@ export default {
     );
     getArticles().then((res) => {
       this.imgUrls = res.data;
-      console.log(res.data);
+      // console.log(res.data);
     });
   },
 };

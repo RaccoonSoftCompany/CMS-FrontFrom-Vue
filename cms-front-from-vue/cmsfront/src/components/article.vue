@@ -169,7 +169,7 @@ export default {
 
   mounted() {
     getArticles().then((res) => {
-      console.log(res);
+      // console.log(res);
       this.articlelist = res.data;
     });
     // $(function () {

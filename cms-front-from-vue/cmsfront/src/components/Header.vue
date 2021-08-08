@@ -71,9 +71,14 @@
                 style="font-weight: 700; font-size: 15px"
                 >修改密码</el-dropdown-item
               >
-
               <el-dropdown-item
-                icon="el-icon-s-operation"
+                icon="el-icon-turn-off"
+                command="change"
+                style="font-weight: 700; font-size: 15px"
+                >切换用户</el-dropdown-item
+              >
+              <el-dropdown-item
+                icon="el-icon-switch-button"
                 command="quit"
                 style="font-weight: 700; font-size: 15px"
                 >退出登录</el-dropdown-item
@@ -294,7 +299,9 @@
                 <el-upload
                   class="avatar-uploader"
                   ref="upload"
-                  :action="'http://cmsapi.ssffyy.com:8090/UploadFile/userimage/' + uId"
+                  :action="
+                    'http://cmsapi.ssffyy.com:8090/UploadFile/userimage/' + uId
+                  "
                   :on-preview="handlePreview"
                   :on-remove="handleRemove"
                   :file-list="fileList"
@@ -552,8 +559,6 @@ export default {
       this.$refs.upload.clearFiles();
     },
     submitUpload() {
-     
-      
       this.$refs.upload.submit();
     },
     handleRemove(file, imageUrl) {
@@ -586,7 +591,7 @@ export default {
               UName: this.form.username,
               Upassword: this.form.password,
             };
-            console.log(data);
+            // console.log(data);
             comeLogin(data).then((res) => {
               console.log(res.data);
               if (res.code === 1000) {
@@ -613,8 +618,8 @@ export default {
                 this.$message.error("用户名或密码错误,请重新尝试！");
               }
               //所以此处打印的是用户状态信息
-              console.log(res.data);
-              console.log(res.data.uImageUrl);
+              // console.log(res.data);
+              // console.log(res.data.uImageUrl);
             });
           }
         }
@@ -652,7 +657,7 @@ export default {
         MatterId: this.registerform.problem,
         Mkey: this.registerform.answer,
       };
-      console.log(data);
+      // console.log(data);
       comeRegister(data).then((res) => {
         //所以此处打印的是用户状态信息
         console.log(res);
@@ -696,7 +701,7 @@ export default {
             let data = {
               UName: this.forgetForm.username,
             };
-            console.log(data);
+            // console.log(data);
             forgetPasswordtoUsername(data.UName).then((res) => {
               console.log(res);
               this.getProblemId = res.data.uId;
@@ -768,7 +773,7 @@ export default {
       this.$refs.upload.clearFiles();
     },
     // 登陆成功用户功能
-    handleCommand(command) {
+    async handleCommand(command) {
       switch (command) {
         case "info":
           // console.log("个人信息");
@@ -782,15 +787,38 @@ export default {
             this.uImageUrl = res.data.imageURL;
             console.log(res);
           });
-
+        case "change":
+          const confirmResult = await this.$confirm("确定切换用户？", "提示", {
+            confirmButtonText: "确定",
+            cancelButtonText: "取消",
+            type: "warning",
+          }).catch((err) => err);
+          if (confirmResult === "confirm") {
+            this.centerDialogVisible = false;
+            removeLoginStatus();
+            this.isLogin = true;
+            removeToken();
+            localStorage.clear();
+            this.loginDialogVisible = true;
+          }
           break;
         case "edit":
           // console.log("修改密码");
           this.changeDialogVisible = true;
           break;
         case "quit": {
-          // console.log("退出登录");
-          this.centerDialogVisible = true;
+          const confirmResult = await this.$confirm("确定注销？", "提示", {
+            confirmButtonText: "确定",
+            cancelButtonText: "取消",
+            type: "warning",
+          }).catch((err) => err);
+          if (confirmResult === "confirm") {
+            this.isLogin = true;
+            removeToken();
+            removeLoginStatus();
+            localStorage.clear();
+          }
+          // this.centerDialogVisible = true;
           break;
         }
       }
@@ -1004,7 +1032,7 @@ header.sticky ul li a {
   cursor: pointer;
   color: #ffffff;
 }
-.dropdown{
+.dropdown {
   cursor: pointer;
 }
 .el-dropdown-link {

@@ -341,7 +341,7 @@ export default {
   },
  async mounted() {
     getArticleTalks(this.articleId).then((res) => {
-      console.log("我是文章Id:" + this.articleId);
+      // console.log("我是文章Id:" + this.articleId);
       // console.log(res.data);
       this.articleComment = res.data;
 
@@ -379,8 +379,8 @@ export default {
     resultImg() {
       let baseUrl = this.path;
       let imgUrl = this.articleDetail.uImageURL;
-      console.log(imgUrl);
-      console.log(baseUrl + imgUrl);
+      // console.log(imgUrl);
+      // console.log(baseUrl + imgUrl);
       return baseUrl + imgUrl;
     },
   },
