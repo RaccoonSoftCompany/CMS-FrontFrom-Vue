@@ -145,6 +145,9 @@
         </el-card>
       </el-card>
     </el-card>
+    <el-backtop>
+      <i class="el-icon-caret-top" style="color: #ff6b81"></i>
+    </el-backtop>
   </div>
 </template>
 
@@ -339,7 +342,7 @@ export default {
   created() {
     this.getParams();
   },
- async mounted() {
+  async mounted() {
     getArticleTalks(this.articleId).then((res) => {
       // console.log("我是文章Id:" + this.articleId);
       // console.log(res.data);
@@ -384,7 +387,6 @@ export default {
       return baseUrl + imgUrl;
     },
   },
- 
 };
 </script>
 

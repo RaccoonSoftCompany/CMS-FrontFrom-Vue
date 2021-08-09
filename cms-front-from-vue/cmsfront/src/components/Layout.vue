@@ -25,7 +25,7 @@
                   <el-carousel height="150px">
                     <el-carousel-item v-for="item in imgUrls" :key="item.id">
                       <h3 class="small">
-                        <img :src="item.idView" alt="" />
+                        <img :src="path + item.aImageUrl" alt="" />
                       </h3>
                     </el-carousel-item>
                   </el-carousel>
@@ -104,7 +104,7 @@
                       style="float: ; font-size: 12px; color: gray"
                       v-if="articleList.length >= 5"
                     >
-                    更多
+                      更多
                     </a>
                   </h3>
 
@@ -175,6 +175,7 @@ import {
   TheTenPraiseCount,
   TheTenTalkCount,
 } from "../api/article";
+import { getArticles } from "../api/user";
 import Card from "./card.vue";
 import Header from "./Header";
 import Footer from "./footer.vue";
@@ -186,13 +187,11 @@ export default {
   },
   data() {
     return {
+      path: "http://cmsapi.ssffyy.com:8090/",
       articleList: {},
       praiseList: {},
       commentList: {},
-      imgUrls: [
-        { id: 0, idView: require("./img/csdn.png") },
-        { id: 1, idView: require("./img/csdn2.jpg") },
-      ],
+      imgUrls: [],
     };
   },
   methods: {
@@ -205,6 +204,10 @@ export default {
   },
   computed: {},
   mounted() {
+    getArticles().then((res) => {
+      this.imgUrls = res.data;
+      console.log(res);
+    });
     // $(".some-list").wrapper({
     //   item: "div.item",
     //   count: 5,
@@ -310,7 +313,7 @@ a {
 .main-header {
   margin: 0px auto;
   width: 80%;
-  height: 470px;
+  height: 520px;
 }
 .text {
   font-size: 14px;

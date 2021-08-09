@@ -1,9 +1,10 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === "produciton" ? './' : '/',
+  // publicPath: '/',
   devServer: {
-    headers: {
-      'Access-Control-Allow-Origin': "*",
-    },
+    // port: 8080,
+    // Headers: {
+    //   'Access-Control-Allow-Origin': '*'
+    // },
     hotOnly: false,
     disableHostCheck: true
   },

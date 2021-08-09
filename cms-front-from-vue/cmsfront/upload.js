@@ -9,10 +9,10 @@ spinner.start();
 
 client.scp('./dist/', {    // 本地打包文件的位置
   "host": '47.112.101.212', // 服务器的IP地址
-  "port": '212',            // 服务器端口， 一般为 22
+  "port": '212',            // 服务器端口
   "username": 'root',       // 用户名
   "password": 'cultural0725.',     // 密码
-  "path": '/www/wwwroot/backcms.blackdragonlee.com'            // 项目部署的服务器目标位置
+  "path": '/www/wwwroot/cms.blackdragonlee.com'            // 项目部署的服务器目标位置
 }, err =>{
   spinner.stop();
   if (!err) {

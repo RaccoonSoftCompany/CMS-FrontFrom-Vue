@@ -6,7 +6,7 @@
         arrow="always"
         :height="bannerHeight + 'px'"
       >
-        <el-carousel-item v-for="item in imgUrls" :key="item.id">
+        <el-carousel-item v-for="item in imgUrls" :key="item.id" >
           <el-row>
             <img
               ref="bannerHeight"
@@ -124,6 +124,7 @@ export default {
   height: 400px;
 } */
 .el-carousel {
+  max-height: 700px !important;
   border-radius: 7px;
 }
 .el-carousel__item h3 {
@@ -175,7 +176,7 @@ span {
 .bannerImg {
   width: 100%;
   height: inherit;
-  max-height: 450px;
+  max-height:500px;
   min-width: 600px;
 }
 .card img a:hover {
