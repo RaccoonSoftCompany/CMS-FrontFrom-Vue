@@ -1,5 +1,8 @@
 <template>
-  <div class="containers">
+  <div
+    class="containers"
+    style="background-attachment: fixed; background-repeat: no-repeat"
+  >
     <div class="top">
       <div class="headpic">
         <img src="../../src/Images/银河护卫队-浣熊火箭64.png" alt="" />
@@ -47,49 +50,49 @@
       <ul id="hexGrid">
         <li class="hex">
           <a class="hexIn" href="#">
-            <img src="../../src/assets/1.png" alt="" />
+            <img src="../../src/assets/1.png" alt="" style="width:100%;height:100%"/>
             <h1>公司简介</h1>
             <p>Company Profile</p>
           </a>
         </li>
         <li class="hex" style="margin-left: 60px">
           <a class="hexIn" href="#">
-            <img src="../../src/assets/2.png" alt="" />
+            <img src="../../src/assets/2.png" alt="" style="width:100%;height:100%" />
             <h1>公司近况</h1>
             <p>Company Status</p>
           </a>
         </li>
         <li class="hex" style="margin-left: 60px">
           <a class="hexIn" href="#">
-            <img src="../../src/assets/3.png" alt="" />
+            <img src="../../src/assets/3.png" alt="" style="width:100%;height:100%" />
             <h1>公司活动</h1>
             <p>Company Activities</p>
           </a>
         </li>
         <li class="hex" style="margin-left: 60px">
           <a class="hexIn" href="#">
-            <img src="../../src/assets/4.png" alt="" />
+            <img src="../../src/assets/4.png" alt="" style="width:100%;height:100%" />
             <h1>公司优势</h1>
             <p>Company Advantage</p>
           </a>
         </li>
       </ul>
       <div>
-        <div class="cards" style="font-family: youyuan">
+        <div class="cards" style="font-family: youyuan; font-size: 16px">
           <br />
           Raccoon是全球领先的信息与通信技术（ICT）解决方案供应商，专注于ICT领域<br />
           2021年6月6日，《2021年BrandZ最具价值全球品牌100强》公布，Raccoon名列第49位。<br />
           2019年7月22日美国《财富》杂志发布了最新一期的世界500强名单，<br />
           Raccoon排名第61位。 2018年《中国500最具价值品牌》Raccoon居第六位。
         </div>
-        <div class="cards1" style="font-family: youyuan">
+        <div class="cards1" style="font-family: youyuan; font-size: 16px">
           <br />
-          2021年2月，沃达丰和Raccoon完成首次5G通话测试 <br />
-          。2021年8月9日，Raccoon正式发布浣熊系统；<br />
+          2021年2月，沃达丰和Raccoon完成首次5G通话测试。 <br />
+          2021年8月9日，Raccoon正式发布浣熊系统；<br />
           8月22日，2021中国民营企业500强发布，Raccoon投资控股有限公司以7212亿营收排名第一；<br />
           7月15日，Raccoon获得了首批“2021中国品牌强国盛典年度荣耀品牌的殊荣”。<br />
         </div>
-        <div class="cards2" style="font-family: youyuan">
+        <div class="cards2" style="font-family: youyuan; font-size: 16px">
           <br />
           2020年12月，Raccoon公司举办年会，邀请多位重量级嘉宾参加。
           <br />
@@ -99,7 +102,7 @@
           <br />
           2021年11月，Raccoon公司举办“全员破冰”活动，增强同事间的团队合作意识，帮助同事体会在团队工作中沟通的重要性。
         </div>
-        <div class="cards3" style="font-family: youyuan">
+        <div class="cards3" style="font-family: youyuan; font-size: 16px">
           <br />
           2021年，Raccoon公司在5G技术方面取得重大突破，遥遥领先于其他国家。
           <br />
@@ -126,10 +129,12 @@ export default {};
 
 <style>
 .containers {
-  margin: 0 auto;
-  width: 1200px;
-  height: 700px;
+  /* margin: 0 auto; */
+  width: 100%;
+  /* height: 30%; */
   background-color: #fcd5e2;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 .top {
   height: 100px;
@@ -185,11 +190,11 @@ export default {};
   margin-top: -60px;
 }
 .companyname {
-  width: 200px;
+  width: 30%;
   height: 60px;
   margin-left: 100px;
   position: relative;
-  margin-top: -40px;
+  margin-top: -60px;
   border-radius: 25px;
   -moz-border-radius: 25px;
   background: rgb(255, 227, 176);
@@ -433,42 +438,42 @@ export default {};
 }
 
 .cards {
-  width: 180px;
-  height: 264px;
+  width: 17%;
+  height: 450px;
   margin-top: 10px;
-  margin-left: 45px;
+  margin-left: 55px;
   background-image: linear-gradient(#fcd8fc, #cbfcd9);
 }
 
 .cards1 {
-  width: 180px;
-  height: 264px;
-  margin-top: -264px;
-  margin-left: 285px;
+  width:  17%;
+  height: 450px;
+  margin-top: -450px;
+  margin-left:28%;
   position: relative;
   background-image: linear-gradient(#aaebf3, #a7f8b2);
 }
 .cards2 {
-  width: 180px;
-  height: 264px;
+  width:  17%;
+  height: 450px;
   position: relative;
-  margin-top: -264px;
-  margin-left: 520px;
+  margin-top: -450px;
+  margin-left: 52%;
   background-image: linear-gradient(#fdcde3, #c1aef7);
 }
 
 .cards3 {
-  width: 180px;
-  height: 264px;
+  width: 17%;
+  height: 450px;
   position: relative;
-  margin-top: -264px;
-  margin-left: 760px;
+  margin-top: -450px;
+  margin-left: 76%;
   background-image: linear-gradient(#b5fac0, #f2faaf);
 }
 
 .bottom {
   height: 70px;
-  margin-top: 40px;
+  margin-top: 9vh;
   background-color: #f8d0c4;
   background-attachment: fixed;
 }

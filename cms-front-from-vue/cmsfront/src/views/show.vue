@@ -5,17 +5,17 @@
     <br />
 
     <table
-      width="920"
+      width="955"
       height="330"
       border="1"
-      style="border-radius: 10px; border: 3px solid #7d7dff"
-    >
+      style="border-radius: 10px; border: 3px solid #7d7dff"> 
       <tr>
         <td width="66" style="border-radius: 10px">
           <a @click="funcShow(1)">FireWork</a>
         </td>
-        <td colspan="5" rowspan="7" style="border-radius: 10px">
-          <div id="div1" style="display: block;">
+
+        <td width="750" colspan="6" rowspan="7" style="border-radius: 10px">
+          <div id="div1" style="display: block">
             <iframe
               id="iframe"
               src="https://www.17sucai.com/preview/1/2016-10-31/yh/index.html"
@@ -364,7 +364,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .show-whole {
   border-radius: 40px;
   width: 955px;
