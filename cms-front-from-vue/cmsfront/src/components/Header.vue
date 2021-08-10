@@ -51,7 +51,7 @@
               <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
               <span
                 class="uName"
-                style="font-weight: 900; font-size: 20px; color: #4b9daf"
+                style="font-weight: 600; font-size: 20px; color: #ED4C67"
               >
                 {{ nickname }}</span
               >
@@ -1013,7 +1013,7 @@ header {
 }
 header.sticky {
   padding: 5px 100px;
-  background: #fff;
+  background: #c7ecee;
 }
 header .logo {
   position: relative;

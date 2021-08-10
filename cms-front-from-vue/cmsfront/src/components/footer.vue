@@ -16,16 +16,19 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="8">
+        <span>TEAMWORK</span>
         <div class="grid-content bg-purple">
           <img src="../Images/底部二维码.jpg" width="150" alt="" />
         </div>
       </el-col>
-      <el-col :span="8"
-        ><div class="grid-content bg-purple">
+      <el-col :span="8">
+        <span>BUILDING</span>
+        <div class="grid-content bg-purple">
           <img src="../Images/底部二维码.jpg" width="150" alt="" /></div
       ></el-col>
-      <el-col :span="8"
-        ><div class="grid-content bg-purple">
+      <el-col :span="8">
+        <span>JOIN US</span>
+        <div class="grid-content bg-purple">
           <img src="../Images/底部二维码.jpg" width="150" alt="" /></div
       ></el-col>
     </el-row>
@@ -37,6 +40,10 @@ export default {};
 </script>
 
 <style scoped>
+span{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 24px;
+}
 .el-row {
   margin-bottom: 20px;
 }

@@ -2,7 +2,6 @@
   <div>
     <el-card>
       <div class="content">
-        <hr />
         <br />
         <div class="grid">
           <a class="grid__item" href="#preview-1">

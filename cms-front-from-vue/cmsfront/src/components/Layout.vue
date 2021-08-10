@@ -1,12 +1,12 @@
 <template>
   <el-container class="top">
-    <el-container>
+    <div>
       <Header></Header>
       <div class="main-top">
         <el-carousel
           class="topCar"
           :interval="4000"
-          arrow="always"
+          arrow="never"
           height="900px"
         >
           <el-carousel-item v-for="item in topImgUrls" :key="item">
@@ -171,7 +171,7 @@
           Copyright © 2021 - 2021 Raccoon. All Rights Reserved.
         </el-footer>
       </div>
-    </el-container>
+    </div>
   </el-container>
 </template>
 
@@ -200,17 +200,14 @@ export default {
       commentList: {},
       imgUrls: [],
       topImgUrls: [
-        { idView: require("../headImg/1.jpg") },
-        { idView: require("../headImg/2.jpg") },
-        { idView: require("../headImg/3.jpg") },
-        { idView: require("../headImg/4.jpg") },
-        { idView: require("../headImg/5.jpg") },
         { idView: require("../headImg/6.jpg") },
         { idView: require("../headImg/7.jpg") },
-        { idView: require("../headImg/8.jpg") },
-        { idView: require("../headImg/9.jpg") },
-        { idView: require("../headImg/10.jpg") },
-        { idView: require("../headImg/11.jpg") },
+        { idView: require("../headImg/18.jpg") },
+        { idView: require("../headImg/19.jpg") },
+        { idView: require("../headImg/20.jpg") },
+        { idView: require("../headImg/21.jpg") },
+        { idView: require("../headImg/22.jpg") },
+        { idView: require("../headImg/23.jpg") },
       ],
     };
   },
@@ -260,12 +257,14 @@ export default {
 </script>
 
 <style>
+* {
+}
 body {
   margin: 0;
   background-color: #f5f7fa !important;
 }
 .wrapper {
-  max-width: 800px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -274,7 +273,13 @@ body {
   padding-top: 10px;
   display: inline-block;
 }
-
+.top {
+  width: 100%;
+  height: 100%;
+  /* overflow-x: hidden; */
+  position: fixed;
+  display: flex;
+}
 .topImg {
   width: 100%;
   height: 900px;
@@ -282,6 +287,8 @@ body {
   background-size: cover;
 }
 .topCar {
+  /* overflow-x: hidden; */
+  /* margin-left: 5px; */
   width: 100%;
   height: 900px;
 }
@@ -291,13 +298,13 @@ body {
 }
 
 .el-footer {
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 400;
   font-family: sans-serif;
   font-style: normal;
   text-transform: none;
-  background-color: #ffffff;
-  box-shadow: 5px -2px 5px rgb(221, 220, 220);
+  background-color: #c7ecee;
+  box-shadow: 5px -2px 5px rgb(202, 207, 207);
   color: #bbbbbb;
   text-align: center;
   line-height: 60px;
@@ -317,7 +324,6 @@ body > .el-container {
   margin-bottom: 40px;
 }
 .el-card__body {
-  
   padding: 5px !important;
 }
 a {
