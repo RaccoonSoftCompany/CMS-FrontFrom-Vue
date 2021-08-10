@@ -1,23 +1,5 @@
 <template>
   <div>
-      <!-- <el-carousel
-        :interval="2500"
-        arrow="always"
-        width="1100px"
-      >
-    
-        <el-carousel-item v-for="item in imgUrls" :key="item.id">
-          
-            <img
-              ref="bannerHeight"
-              :src="path + item.aImageUrl"
-              class="bannerImg"
-              @load="imgLoad"
-            />
-          
-        </el-carousel-item>
-    
-      </el-carousel> -->
 
     <el-col :span="6">
       <el-card shadow="hover" class="card"
@@ -141,7 +123,7 @@ export default {
 
 .card {
   /* height: 100px; */
-  background: linear-gradient(45deg, #ccdff7, #40595f);
+  background: linear-gradient(45deg, #989898, #567087);
 }
 a {
   font-weight: 900;

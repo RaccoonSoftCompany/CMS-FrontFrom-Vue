@@ -3,8 +3,20 @@
     <el-container>
       <Header></Header>
       <div class="main-top">
+        <el-carousel
+          class="topCar"
+          :interval="4000"
+          arrow="always"
+          height="900px"
+        >
+          <el-carousel-item v-for="item in topImgUrls" :key="item">
+            <div class="topImg">
+              <img :src="item.idView" alt="" class="topImgChild" />
+            </div>
+          </el-carousel-item>
+        </el-carousel>
         <el-main>
-          <div class="main-header"></div>
+          <!-- <div class="main-header"></div> -->
           <Card></Card>
           <section class="main">
             <article>
@@ -17,7 +29,7 @@
             <aside>
               <el-card class="asidecard">
                 <div class="block">
-                  <el-carousel height="150px">
+                  <el-carousel height="200px">
                     <el-carousel-item v-for="item in imgUrls" :key="item.id">
                       <h3 class="small">
                         <img :src="path + item.aImageUrl" alt="" />
@@ -187,6 +199,19 @@ export default {
       praiseList: {},
       commentList: {},
       imgUrls: [],
+      topImgUrls: [
+        { idView: require("../headImg/1.jpg") },
+        { idView: require("../headImg/2.jpg") },
+        { idView: require("../headImg/3.jpg") },
+        { idView: require("../headImg/4.jpg") },
+        { idView: require("../headImg/5.jpg") },
+        { idView: require("../headImg/6.jpg") },
+        { idView: require("../headImg/7.jpg") },
+        { idView: require("../headImg/8.jpg") },
+        { idView: require("../headImg/9.jpg") },
+        { idView: require("../headImg/10.jpg") },
+        { idView: require("../headImg/11.jpg") },
+      ],
     };
   },
   methods: {
@@ -249,17 +274,22 @@ body {
   padding-top: 10px;
   display: inline-block;
 }
-.main-top {
-  /* border-radius: 10px; */
-  text-align: center;
+
+.topImg {
   width: 100%;
-  height: 700px;
-  background-image: url("../headImg/1.jpg");
+  height: 900px;
+  /* background-image: url("../headImg/1.jpg"); */
   background-size: cover;
-  /* position: relative; */
-  /* background: linear-gradient(45deg, #d4f6fc, #fadbfa); */
-  box-shadow: 5px 8px 5px rgb(221, 220, 220);
 }
+.topCar {
+  width: 100%;
+  height: 900px;
+}
+.topImgChild {
+  width: 100%;
+  height: 900px;
+}
+
 .el-footer {
   font-size: 12px;
   font-weight: 400;
@@ -287,24 +317,9 @@ body > .el-container {
   margin-bottom: 40px;
 }
 .el-card__body {
+  
   padding: 5px !important;
 }
-.el-carousel__item h3 {
-  color: #475669;
-  font-size: 14px;
-  opacity: 0.75;
-  line-height: 150px;
-  margin: 0;
-}
-
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
-}
-
 a {
   text-decoration: none !important;
 }
@@ -331,8 +346,9 @@ a {
 }
 /* main */
 .main {
-  width: 90%;
+  width: 100%;
 
+  padding: 0;
   margin: auto 0;
   display: flex;
 }
@@ -363,7 +379,7 @@ a {
   line-height: 16px;
   font-weight: bold;
   text-decoration: underline;
-  top: -1px;
+  /* top: -1px; */
   left: 92px;
 }
 .main > aside > dl > dd:first-of-type {
@@ -391,7 +407,7 @@ a {
   margin: 0;
   height: 300px;
   width: 100%;
-  background-color: lightcoral;
+  background-color: rgb(255, 255, 255);
   /* position: relative !important;
   display: flex !important;
   justify-content: space-around !important;
@@ -411,7 +427,7 @@ a {
 
 .rightSide .rank {
   width: 100%;
-  float: left;
+  /* float: left; */
   /* border: 0.1px solid gray; */
   box-shadow: none;
 }
@@ -443,8 +459,9 @@ a {
   box-shadow: none !important;
   background-color: #f5f7fa !important;
 }
-.asidecard {
-  border: none !important;
+.asidecard__body {
+  background-color: #fff;
+  /* border: none !important; */
   box-shadow: none !important;
   background-color: #f5f7fa !important;
 }

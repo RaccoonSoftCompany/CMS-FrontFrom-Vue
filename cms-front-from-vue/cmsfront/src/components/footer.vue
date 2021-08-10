@@ -45,13 +45,13 @@ export default {};
   border-radius: 4px;
 }
 .bg-purple-dark {
-  background: #99a9bf;
+  background: #ffffff;
 }
 .bg-purple {
-  background: #d3dce6;
+  background: #ffffff;
 }
 .bg-purple-light {
-  background: #e5e9f2;
+  background: #ffffff;
 }
 .grid-content {
   border-radius: 4px;
@@ -59,10 +59,10 @@ export default {};
 }
 .row-bg {
   padding: 10px 0;
-  background-color: #f9fafc;
+  background-color: hsl(0, 0%, 100%);
 }
 .font {
-  color: white;
+  color: black;
   font-size: 28px;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 600;
