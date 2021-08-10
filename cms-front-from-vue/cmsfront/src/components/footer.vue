@@ -1,45 +1,35 @@
 <template>
   <!-- <div class="container"> -->
-    <div class="footermain">
-
-    </div>
-    <!-- <div class="card">
-      <div class="imgBx">
-        <img src="./img/二维码1.png" alt="" />
-      </div>
-      <div class="contentBx">
-        <h2>设计</h2>
-        <p>
-          任何时候，无论你面临着生命的何等困惑，抑或经受着多少挫折，无论道路如何的艰难，无论希望变得如何渺茫，请你不要绝望，再试一次，成功一定属于你!
-        </p>
-        <a href="#"><span>Read More</span></a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="imgBx">
-        <img src="./img/二维码1.png" alt="" />
-      </div>
-      <div class="contentBx">
-        <h2>编码</h2>
-        <p>
-          任何时候，无论你面临着生命的何等困惑，抑或经受着多少挫折，无论道路如何的艰难，无论希望变得如何渺茫，请你不要绝望，再试一次，成功一定属于你!
-        </p>
-        <a href="#"><span>Read More</span></a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="imgBx">
-        <img src="./img/二维码1.png" alt="" />
-      </div>
-      <div class="contentBx">
-        <h2>成长</h2>
-        <p>
-          任何时候，无论你面临着生命的何等困惑，抑或经受着多少挫折，无论道路如何的艰难，无论希望变得如何渺茫，请你不要绝望，再试一次，成功一定属于你!
-        </p>
-        <a href="#"><span>Read More</span></a>
-      </div>
-    </div> -->
-  <!-- </div> -->
+  <div class="footermain">
+    <el-row :gutter="20">
+      <el-col :span="6"
+        ><div class="grid-content bg-purple">
+          <a href=""
+            ><img src="../Images/银河护卫队-浣熊火箭48.jpg" alt="" />
+            <span class="font">Raccoon</span>
+          </a>
+        </div></el-col
+      >
+      <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
+    </el-row>
+    <el-row :gutter="20">
+      <el-col :span="8">
+        <div class="grid-content bg-purple">
+          <img src="../Images/底部二维码.jpg" width="150" alt="" />
+        </div>
+      </el-col>
+      <el-col :span="8"
+        ><div class="grid-content bg-purple">
+          <img src="../Images/底部二维码.jpg" width="150" alt="" /></div
+      ></el-col>
+      <el-col :span="8"
+        ><div class="grid-content bg-purple">
+          <img src="../Images/底部二维码.jpg" width="150" alt="" /></div
+      ></el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
@@ -47,98 +37,34 @@ export default {};
 </script>
 
 <style scoped>
-*{
-  font-family: '微软雅黑', sans-serif;
-  box-sizing: border-box;
+.el-row {
+  margin-bottom: 20px;
 }
-body{
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  min-height: 100vh;
-  background: #ebf5fc;
-  overflow: hidden;
+.el-col {
+  margin-top: 5px;
+  border-radius: 4px;
 }
-.container{
-  position: relative !important;
-  display: flex !important;
-  justify-content: space-around !important;
-  align-items: center !important;
-  width: 100% !important;
-  flex-wrap: wrap !important;
+.bg-purple-dark {
+  background: #99a9bf;
 }
-
-.container .card{
-  width: 320px;
-  margin: 20px;
-  padding: 40px 30px;
-  background: #F5F7FA;
-  border-radius: 40px;
-  border: none !important;
-  box-shadow: -6px -6px 20px rgba(255, 255, 255, 1),
-              6px 6px 20px rgba(0, 0, 0, .1);
+.bg-purple {
+  background: #d3dce6;
 }
-
-.container .card:hover{
-  box-shadow: inset -6px -6px 10px rgba(255, 255, 255, 0.5),
-              inset 6px 6px 20px rgba(0, 0, 0, 0.05);
+.bg-purple-light {
+  background: #e5e9f2;
 }
-
-.container .card .imgBx{
-  position: relative;
-  text-align: center;
+.grid-content {
+  border-radius: 4px;
+  min-height: 36px;
 }
-
-.container .card .imgBx img{
-  max-width: 120px;
+.row-bg {
+  padding: 10px 0;
+  background-color: #f9fafc;
 }
-
-.container .card .contentBx{
-  position: relative;
-  margin-top: 20px;
-  text-align: center;
-}
-
-.container .card .contentBx h2{
-  color: #32a3b1;
-  font-weight: 700;
-  font-size: 1.4em;
-  letter-spacing: 2px;
-}
-
-.container .card .contentBx p{
-  color: #32a3b1;
-}
-
-.container .card .contentBx a{
-  display: inline-block;
-  padding: 10px 20px;
-  margin-top: 15px;
-  border-radius: 40px;
-  color: #32a3b1;
-  font-size: 16px;
-  text-decoration: none;
-  box-shadow: -4px -4px 15px rgba(255, 255, 255, 1),
-  4px 4px 15px rgba(0, 0, 0, .1);
-}
-
-.container .card .contentBx a:hover{
-  box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.5),
-  inset 4px 4px 10px rgba(0, 0, 0, .1);
-}
-
-.container .card .contentBx a:hover span{
-  display: block;
-  transform: scale(0.98);
-}
-
-.container .card:hover .imgBx,
-.container .card:hover .contentBx{
-  transform: scale(0.98);
-}
-.footermain{
-  width: 100%;
-  height: 100px;
-  border: rgb(12, 9, 9);
+.font {
+  color: white;
+  font-size: 28px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 600;
 }
 </style>

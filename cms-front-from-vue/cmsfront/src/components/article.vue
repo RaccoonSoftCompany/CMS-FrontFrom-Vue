@@ -1,6 +1,6 @@
 <template>
   <div class="container" ref="container">
-    <div class="infinite-list-wrapper" style="overflow: auto" >
+    <div class="infinite-list-wrapper" style="overflow: auto">
       <!-- <ul
         class="list"
         v-infinite-scroll="load"
@@ -11,13 +11,16 @@
       <el-card
         class="topCard"
         :inline="true"
-        
-        
         v-for="item in articlelist"
         :key="item.value"
         style="margin-top: 1px"
       >
-        <img v-if="item.aImageUrl" :src="`http://cmsapi.ssffyy.com:8090/`+item.aImageUrl" alt="" style="float: left;width:230px;height:200px;border-radius:5%" />
+        <img
+          v-if="item.aImageUrl"
+          :src="`http://cmsapi.ssffyy.com:8090/` + item.aImageUrl"
+          alt=""
+          style="float: left; width: 230px; height: 200px; border-radius: 1%;"
+        />
         <br />
 
         <h1>
@@ -25,7 +28,7 @@
             <span>{{ item.aTitle }}</span>
           </router-link>
         </h1>
-        <br>
+        <br />
         <h4>{{ item.aIntro | ellipsis }}</h4>
         <br />
         <div style="display: flex">

@@ -1,49 +1,45 @@
 <template>
-  <div class="box-card">
-    <div class="scrollcard">
-      <el-carousel
+  <div>
+      <!-- <el-carousel
         :interval="2500"
         arrow="always"
-        :height="bannerHeight + 'px'"
+        width="1100px"
       >
-        <el-carousel-item v-for="item in imgUrls" :key="item.id" >
-          <el-row>
+    
+        <el-carousel-item v-for="item in imgUrls" :key="item.id">
+          
             <img
               ref="bannerHeight"
               :src="path + item.aImageUrl"
               class="bannerImg"
               @load="imgLoad"
             />
-          </el-row>
+          
         </el-carousel-item>
-      </el-carousel>
-    </div>
+    
+      </el-carousel> -->
 
     <el-col :span="6">
       <el-card shadow="hover" class="card"
         ><img src="../Images/bxs-hot.png" alt="" />
-        <!-- <a href="http://localhost:8081/news"><span>新闻时讯</span></a> -->
         <router-link :to="{ name: 'article' }">新闻时讯</router-link>
       </el-card>
     </el-col>
     <el-col :span="6">
       <el-card shadow="hover" class="card"
         ><img src="../Images/bx-buildings.png" alt="" />
-        <!-- <a href="http://localhost:8081/company">公司动态</a> -->
         <router-link :to="{ name: 'company' }">公司动态</router-link>
       </el-card>
     </el-col>
     <el-col :span="6">
       <el-card shadow="hover" class="card"
         ><img src="../Images/bxs-crown.png" alt="" />
-        <!-- <a href="http://localhost:8081/show">大神风采</a> -->
         <router-link :to="{ name: 'show' }">大神风采</router-link>
       </el-card>
     </el-col>
     <el-col :span="6">
       <el-card shadow="hover" class="card"
         ><img src="../Images/bxs-group.png" alt="" />
-        <!-- <a href="http://localhost:8081/about">关于我们</a> -->
         <router-link :to="{ name: 'about' }">关于我们</router-link>
       </el-card>
     </el-col>
@@ -111,18 +107,7 @@ export default {
   padding: 20px;
   box-shadow: 5px 3px 5px grey;
 }
-.box-card {
-  border-radius: 20px;
-  margin: 0 auto;
-  margin-top: 5%;
-  width: 80%;
-  /* height: 400px !important; */
-}
-/* .scrollcard{
-  width: 100%;
-  margin: 0 auto;
-  height: 400px;
-} */
+
 .el-carousel {
   max-height: 700px !important;
   border-radius: 7px;
@@ -152,17 +137,11 @@ export default {
   /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); */
   /* transition: opacity 0.3s ease-in-out; */
 }
-/* .card:hover { */
-/* -webkit-transform: scale(1.25, 1.25); */
-/* transform: scale(1.2, 1.2); */
-/* } */
-/* .card:hover::after { */
-/* opacity: 1; */
-/* } */
+
 
 .card {
   /* height: 100px; */
-  background: linear-gradient(45deg, #eaccf7, #b2d5f8);
+  background: linear-gradient(45deg, #ccdff7, #40595f);
 }
 a {
   font-weight: 900;
@@ -173,12 +152,7 @@ a {
 span {
   font-family: fantasy !important;
 }
-.bannerImg {
-  width: 100%;
-  height: inherit;
-  max-height:500px;
-  min-width: 600px;
-}
+
 .card img a:hover {
   background-color: rgba(255, 255, 255, 4);
   color: #fff;

@@ -53,31 +53,37 @@
           </div>
         </div>
         <el-card class="middle">
-          <img
-            :src="resultImg"
-            style="width: 20px; height: 20px; border-radius: 50%"
-          />
-          &nbsp; &nbsp;
-          {{ articleDetail.nickName }}
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          {{ articleDetail.createdTime }}
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <img
-            src="../components/img/articleReadEyes.png"
-            class="eye"
-            align="absmiddle"
-            alt=""
-          />
+          <div id="center">
+            <div>
+              <img
+                :src="resultImg"
+                style="width: 20px; height: 20px; border-radius: 50%"
+              />
+              &nbsp;
+              {{ articleDetail.nickName }}
+              &nbsp; &nbsp;&nbsp; &nbsp;
+              {{ articleDetail.createdTime }}
+              &nbsp; &nbsp;&nbsp; &nbsp;
+              <img
+                src="../components/img/articleReadEyes.png"
+                class="eye"
+                align="absmiddle"
+                alt=""
+              />
 
-          {{ articleDetail.aReadCount }}
-          <b
-            style="cursor: pointer; margin-left: 20px"
-            @click="addStyleOrGetDate"
-            :class="{ active: activeClass }"
-          >
-            &#10084;
-          </b>
-          <a href="#" class="power">版权</a>
+              {{ articleDetail.aReadCount }}
+              <b
+                style="cursor: pointer; margin-left: 20px"
+                @click="addStyleOrGetDate"
+                :class="{ active: activeClass }"
+              >
+                &#10084;
+              </b>
+            </div>
+            <div>
+              <a href="#" class="power">版权</a>
+            </div>
+          </div>
         </el-card>
         <br />
         <div class="middletmp">
@@ -424,9 +430,9 @@ export default {
   justify-content: center;
 }
 .power {
-  margin-left: 620px;
-  /* width: 500px; */
-  float: right !important;
+  float: right;
+  width: 100px;
+  /* float: right !important; */
 }
 .active {
   border: none;
@@ -452,7 +458,12 @@ h4 {
   font-weight: 600;
   color: #555666;
 }
-
+#center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 20px;
+}
 .active {
   border: none;
   color: #ff0000;
@@ -508,7 +519,7 @@ h4 {
 }
 .incard {
   margin: 0 auto;
-  width: 55% !important;
+  width: 65% !important;
 }
 .eye {
   width: 24px;
@@ -528,7 +539,7 @@ h4 {
   box-shadow: none;
   background-color: #f8f8f8;
   font-size: 14px;
-  width: 54vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;

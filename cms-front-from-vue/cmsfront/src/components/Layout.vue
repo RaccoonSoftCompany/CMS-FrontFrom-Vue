@@ -4,16 +4,11 @@
       <Header></Header>
       <div class="main-top">
         <el-main>
-          <div class="main-header">
-            <Card></Card>
-          </div>
-
+          <div class="main-header"></div>
+          <Card></Card>
           <section class="main">
             <article>
               <div class="outcard">
-                <!-- <el-card> -->
-                <!-- </el-card> -->
-
                 <div class="context">
                   <router-view></router-view>
                 </div>
@@ -155,10 +150,10 @@
               <i class="el-icon-caret-top" style="color: #ff6b81"></i>
             </el-backtop>
           </section>
-          <div class="main-footer">
-            <Footer></Footer>
-          </div>
         </el-main>
+        <div class="main-footer">
+          <Footer></Footer>
+        </div>
 
         <el-footer>
           Copyright © 2021 - 2021 Raccoon. All Rights Reserved.
@@ -255,11 +250,14 @@ body {
   display: inline-block;
 }
 .main-top {
-  border-radius: 10px;
+  /* border-radius: 10px; */
   text-align: center;
   width: 100%;
-  height: 560px;
-  background: linear-gradient(45deg, #d4f6fc, #fadbfa);
+  height: 700px;
+  background-image: url("../headImg/1.jpg");
+  background-size: cover;
+  /* position: relative; */
+  /* background: linear-gradient(45deg, #d4f6fc, #fadbfa); */
   box-shadow: 5px 8px 5px rgb(221, 220, 220);
 }
 .el-footer {
@@ -313,7 +311,7 @@ a {
 .main-header {
   margin: 0px auto;
   width: 80%;
-  height: 520px;
+  height: 700px;
 }
 .text {
   font-size: 14px;
@@ -389,12 +387,17 @@ a {
   margin-bottom: 20px;
 }
 .main-footer {
-  position: relative !important;
+  padding: 0;
+  margin: 0;
+  height: 300px;
+  width: 100%;
+  background-color: lightcoral;
+  /* position: relative !important;
   display: flex !important;
   justify-content: space-around !important;
   align-items: center !important;
   width: 100% !important;
-  flex-wrap: wrap !important;
+  flex-wrap: wrap !important; */
 }
 .rightSide {
   width: 100%;
