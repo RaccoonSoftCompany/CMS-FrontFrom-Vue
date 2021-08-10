@@ -55,8 +55,8 @@
 
                     <el-card
                       style="float: left; width: 100%"
-                      v-for="(item, index) in praiseList"
-                      :key="item.id"
+                      v-for="(item, index) in articleList"
+                      :key="item"
                       class="rank"
                     >
                       <router-link
@@ -72,7 +72,7 @@
                         <div v-show="show3">
                           <el-card
                             style="float: left; width: 100%"
-                            v-for="(item, index) in moreData"
+                            v-for="(item, index) in moreReadData"
                             :key="item.id"
                             class="transition-box rank"
                           >
@@ -105,19 +105,17 @@
                       content=""
                       placement="bottom"
                     >
-                      <el-button>更多</el-button>
+                      <el-button
+                        @click="show4 = !show4"
+                        style="font-size: 12px; color: gray"
+                        >更多</el-button
+                      >
                     </el-tooltip>
-                    <!-- <a
-                      style="float: ; font-size: 12px; color: gray"
-                      v-if="articleList.length >= 5"
-                    >
-                      更多
-                    </a> -->
                   </h3>
                   <el-card
                     style="float: left; width: 100%"
                     v-for="(item, index) in praiseList"
-                    :key="item.id"
+                    :key="item"
                     class="rank"
                   >
                     <router-link
@@ -128,6 +126,28 @@
                       >
                     </router-link>
                   </el-card>
+                   <div style="margin-top: 20px">
+                      <el-collapse-transition>
+                        <div v-show="show4">
+                          <el-card
+                            style="float: left; width: 100%"
+                            v-for="(item, index) in morePraiseData"
+                            :key="item.id"
+                            class="transition-box rank"
+                          >
+                            <router-link
+                              :to="{
+                                path: `articleDetail/?articleId=${item.id}`,
+                              }"
+                            >
+                              <span style="float: left"
+                                >{{ index + 6 }}.{{ item.aTitle }}</span
+                              >
+                            </router-link>
+                          </el-card>
+                        </div>
+                      </el-collapse-transition>
+                    </div>
                 </el-card>
                 <el-card class="rightSide">
                   <h3>
@@ -226,11 +246,14 @@ export default {
     return {
       path: "http://cmsapi.ssffyy.com:8090/",
       articleList: {},
+      articleRead: {},
       praiseList: {},
-      morePraiseData: {},
       commentList: {},
+      moreReadData: {},
+      morePraiseData: {},
       imgUrls: [],
       show3: false,
+      show4: false,
       topImgUrls: [
         { idView: require("../headImg/6.jpg") },
         { idView: require("../headImg/7.jpg") },
@@ -262,7 +285,15 @@ export default {
     //   count: 5,
     // });
     TheFirstReadCount().then((res) => {
-      this.articleList = res.data;
+      console.log(res.data);
+      if (res.data.length > 5) {
+        this.articleList = res.data.slice(0, 5);
+        console.log(this.articleList);
+        this.moreReadData = res.data.slice(5);
+        console.log(this.moreReadData);
+      } else {
+        this.articleList = res.data;
+      }
       // console.log(res);
     });
     TheTenPraiseCount().then((res) => {
