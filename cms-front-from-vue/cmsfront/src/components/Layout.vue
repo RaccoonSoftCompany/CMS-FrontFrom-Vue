@@ -9,7 +9,7 @@
           arrow="never"
           height="900px"
         >
-          <el-carousel-item v-for="item in topImgUrls" :key="item">
+          <el-carousel-item v-for="(item,index) in topImgUrls" :key="index">
             <div class="topImg">
               <img :src="item.idView" alt="" class="topImgChild" />
             </div>
@@ -30,7 +30,7 @@
               <el-card class="asidecard">
                 <div class="block">
                   <el-carousel height="200px">
-                    <el-carousel-item v-for="item in imgUrls" :key="item.id">
+                    <el-carousel-item v-for="(item,index) in imgUrls" :key="index.id">
                       <h3 class="small">
                         <img :src="path + item.aImageUrl" alt="" />
                       </h3>
@@ -56,13 +56,13 @@
                     <el-card
                       style="float: left; width: 100%"
                       v-for="(item, index) in articleList"
-                      :key="item"
+                      :key="item.id"
                       class="rank"
                     >
                       <router-link
                         :to="{ path: `articleDetail/?articleId=${item.id}` }"
                       >
-                        <span style="float: left"
+                        <span class="more-font" style="float: left"
                           >{{ index + 1 }}.{{ item.aTitle }}</span
                         >
                       </router-link>
@@ -73,7 +73,7 @@
                           <el-card
                             style="float: left; width: 100%"
                             v-for="(item, index) in moreReadData"
-                            :key="item.id"
+                            :key="index.id"
                             class="transition-box rank"
                           >
                             <router-link
@@ -81,7 +81,7 @@
                                 path: `articleDetail/?articleId=${item.id}`,
                               }"
                             >
-                              <span style="float: left"
+                              <span class="more-font" style="float: left"
                                 >{{ index + 6 }}.{{ item.aTitle }}</span
                               >
                             </router-link>
@@ -99,55 +99,49 @@
                       alt=""
                     />10天点赞更多
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <el-tooltip
-                      class="item"
-                      effect="dark"
-                      content=""
-                      placement="bottom"
+
+                    <el-button
+                      @click="show4 = !show4"
+                      style="font-size: 12px; color: gray"
+                      >更多</el-button
                     >
-                      <el-button
-                        @click="show4 = !show4"
-                        style="font-size: 12px; color: gray"
-                        >更多</el-button
-                      >
-                    </el-tooltip>
                   </h3>
                   <el-card
                     style="float: left; width: 100%"
                     v-for="(item, index) in praiseList"
-                    :key="item"
+                    :key="item.id"
                     class="rank"
                   >
                     <router-link
                       :to="{ path: `articleDetail/?articleId=${item.id}` }"
                     >
-                      <span style="float: left"
+                      <span class="more-font" style="float: left"
                         >{{ index + 1 }}.{{ item.aTitle }}</span
                       >
                     </router-link>
                   </el-card>
-                   <div style="margin-top: 20px">
-                      <el-collapse-transition>
-                        <div v-show="show4">
-                          <el-card
-                            style="float: left; width: 100%"
-                            v-for="(item, index) in morePraiseData"
-                            :key="item.id"
-                            class="transition-box rank"
+                  <div style="margin-top: 20px">
+                    <el-collapse-transition>
+                      <div v-show="show4">
+                        <el-card
+                          style="float: left; width: 100%"
+                          v-for="(item, index) in morePraiseData"
+                          :key="item.id"
+                          class="transition-box rank"
+                        >
+                          <router-link
+                            :to="{
+                              path: `articleDetail/?articleId=${item.id}`,
+                            }"
                           >
-                            <router-link
-                              :to="{
-                                path: `articleDetail/?articleId=${item.id}`,
-                              }"
+                            <span class="more-font" style="float: left"
+                              >{{ index + 6 }}.{{ item.aTitle }}</span
                             >
-                              <span style="float: left"
-                                >{{ index + 6 }}.{{ item.aTitle }}</span
-                              >
-                            </router-link>
-                          </el-card>
-                        </div>
-                      </el-collapse-transition>
-                    </div>
+                          </router-link>
+                        </el-card>
+                      </div>
+                    </el-collapse-transition>
+                  </div>
                 </el-card>
                 <el-card class="rightSide">
                   <h3>
@@ -157,14 +151,13 @@
                       alt=""
                     />10天评论排行
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a
-                      style="float: ; font-size: 12px; color: gray"
-                      v-if="articleList.length >= 5"
-                    >
-                      更多
-                    </a>
-                  </h3>
 
+                    <el-button
+                      @click="show5 = !show5"
+                      style="font-size: 12px; color: gray"
+                      >更多</el-button
+                    >
+                  </h3>
                   <el-card
                     style="float: left; width: 100%"
                     v-for="(item, index) in commentList"
@@ -174,38 +167,60 @@
                     <router-link
                       :to="{ path: `articleDetail/?articleId=${item.id}` }"
                     >
-                      <span style="float: left"
+                      <span class="more-font" style="float: left"
                         >{{ index + 1 }}.{{ item.aTitle }}</span
                       >
                     </router-link>
                   </el-card>
+                  <div style="margin-top: 20px">
+                    <el-collapse-transition>
+                      <div v-show="show5">
+                        <el-card
+                          style="float: left; width: 100%"
+                          v-for="(item, index) in moreCommentData"
+                          :key="item.id"
+                          class="transition-box rank"
+                        >
+                          <router-link
+                            :to="{
+                              path: `articleDetail/?articleId=${item.id}`,
+                            }"
+                          >
+                            <span class="more-font" style="float: left"
+                              >{{ index + 6 }}.{{ item.aTitle }}</span
+                            >
+                          </router-link>
+                        </el-card>
+                      </div>
+                    </el-collapse-transition>
+                  </div>
                 </el-card>
-                <el-card class="connection">
-                  <span style="color: #808080; font-size: 14px"
-                    >联系我们 （工作时间：8:30-22:00）</span
-                  ><br />
-                  <span style="color: #808080;font-size:14px;float;left"
-                    >RACCOON &#10084; raccoon.com</span
-                  >
-                </el-card>
-                <el-card class="cultural">
-                  <span style="color: #808080; font-size: 14px">
-                    <a href="https://beian.miit.gov.cn/#/Integrated/index"
-                      >闽ICP备398846号</a
-                    ></span
-                  ><br />
-                  <span style="color: #808080;font-size:14px;float;left"
-                    >经验性网站备案信息</span
-                  ><br />
-                  <span style="color: #808080;font-size:14px;float;left">
-                    <img
-                      src="../components/img/备案.png"
-                      style="width: 16px; height: 16px"
-                      alt=""
-                    />
-                    公安备案号1001011344</span
-                  >
-                </el-card>
+              </el-card>
+              <el-card class="connection">
+                <span style="color: #808080; font-size: 14px"
+                  >联系我们 （工作时间：8:30-22:00）</span
+                ><br />
+                <span style="color: #808080;font-size:14px;float;left"
+                  >RACCOON &#10084; raccoon.com</span
+                >
+              </el-card>
+              <el-card class="cultural">
+                <span style="color: #808080; font-size: 14px">
+                  <a href="https://beian.miit.gov.cn/#/Integrated/index"
+                    >闽ICP备398846号</a
+                  ></span
+                ><br />
+                <span style="color: #808080;font-size:14px;float;left"
+                  >经验性网站备案信息</span
+                ><br />
+                <span style="color: #808080;font-size:14px;float;left">
+                  <img
+                    src="../components/img/备案.png"
+                    style="width: 16px; height: 16px"
+                    alt=""
+                  />
+                  公安备案号1001011344</span
+                >
               </el-card>
             </aside>
             <el-backtop>
@@ -251,9 +266,11 @@ export default {
       commentList: {},
       moreReadData: {},
       morePraiseData: {},
+      moreCommentData: {},
       imgUrls: [],
       show3: false,
       show4: false,
+      show5: false,
       topImgUrls: [
         { idView: require("../headImg/6.jpg") },
         { idView: require("../headImg/7.jpg") },
@@ -278,19 +295,19 @@ export default {
   mounted() {
     getArticles().then((res) => {
       this.imgUrls = res.data;
-      console.log(res);
+      // console.log(res);
     });
     // $(".some-list").wrapper({
     //   item: "div.item",
     //   count: 5,
     // });
     TheFirstReadCount().then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data.length > 5) {
         this.articleList = res.data.slice(0, 5);
-        console.log(this.articleList);
+        // console.log(this.articleList);
         this.moreReadData = res.data.slice(5);
-        console.log(this.moreReadData);
+        // console.log(this.moreReadData);
       } else {
         this.articleList = res.data;
       }
@@ -300,15 +317,20 @@ export default {
       if (res.data.length > 5) {
         this.praiseList = res.data.slice(0, 5);
         this.morePraiseData = res.data.slice(5);
-        console.log(this.morePraiseData);
-        console.log(this.praiseList);
+        // console.log(this.morePraiseData);
+        // console.log(this.praiseList);
       } else {
         this.praiseList = res.data;
       }
       // console.log(res);
     });
     TheTenTalkCount().then((res) => {
-      this.commentList = res.data;
+      if (res.data.length > 5) {
+        this.commentList = res.data.slice(0, 5);
+        this.moreCommentData = res.data.slice(5);
+      } else {
+        this.commentList = res.data;
+      }
       // console.log(res);
     });
   },
@@ -434,6 +456,7 @@ a {
 .main > aside {
   /* float: right; */
   overflow: hidden;
+  margin-left: 8px;
   width: 35%;
 }
 .main > aside > dl {
@@ -531,11 +554,19 @@ a {
   box-shadow: none !important;
   background-color: #f5f7fa !important;
 }
+.asidecard{
+  margin-top: 5px;
+}
 .asidecard__body {
   background-color: #fff;
   /* border: none !important; */
   box-shadow: none !important;
   background-color: #f5f7fa !important;
+}
+.more-font{
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  font-family:sans-serif !important;
 }
 /* .transition-box {
     margin-bottom: 10px;

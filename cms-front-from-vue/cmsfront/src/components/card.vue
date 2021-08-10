@@ -1,29 +1,36 @@
 <template>
   <div>
-
     <el-col :span="6">
-      <el-card shadow="hover" class="card"
-        ><img src="../Images/bxs-hot.png" alt="" />
-        <router-link :to="{ name: 'article' }">新闻时讯</router-link>
-      </el-card>
+      <router-link :to="{ name: 'article' }">
+        <el-card shadow="hover" class="card"
+          ><img src="../Images/bxs-hot.png" alt="" />
+          新闻时讯
+        </el-card>
+      </router-link>
     </el-col>
     <el-col :span="6">
-      <el-card shadow="hover" class="card"
-        ><img src="../Images/bx-buildings.png" alt="" />
-        <router-link :to="{ name: 'company' }">公司动态</router-link>
-      </el-card>
+      <router-link :to="{ name: 'company' }">
+        <el-card shadow="hover" class="card"
+          ><img src="../Images/bx-buildings.png" alt="" />
+          公司动态
+        </el-card>
+      </router-link>
     </el-col>
     <el-col :span="6">
-      <el-card shadow="hover" class="card"
-        ><img src="../Images/bxs-crown.png" alt="" />
-        <router-link :to="{ name: 'show' }">大神风采</router-link>
-      </el-card>
+      <router-link :to="{ name: 'show' }">
+        <el-card shadow="hover" class="card"
+          ><img src="../Images/bxs-crown.png" alt="" />
+          大神风采
+        </el-card>
+      </router-link>
     </el-col>
     <el-col :span="6">
-      <el-card shadow="hover" class="card"
-        ><img src="../Images/bxs-group.png" alt="" />
-        <router-link :to="{ name: 'about' }">关于我们</router-link>
-      </el-card>
+      <router-link :to="{ name: 'about' }">
+        <el-card shadow="hover" class="card"
+          ><img src="../Images/bxs-group.png" alt="" />
+          关于我们
+        </el-card>
+      </router-link>
     </el-col>
     <!-- </el-card> -->
   </div>
@@ -51,24 +58,8 @@ export default {
     img() {
       return this.path + this.imgUrls;
     },
-
-    imgLoad() {
-      this.$nextTick(() => {
-        this.bannerHeight = this.$refs.bannerHeight[0];
-        // console.log((this.bannerHeight = this.$refs.bannerHeight[0].height));
-      });
-    },
   },
   mounted() {
-    this.imgLoad();
-    window.addEventListener(
-      "resize",
-      () => {
-        this.bannerHeight = this.$refs.bannerHeight[0];
-        this.imgLoad();
-      },
-      false
-    );
     getArticles().then((res) => {
       this.imgUrls = res.data;
       // console.log(res.data);
@@ -120,10 +111,9 @@ export default {
   /* transition: opacity 0.3s ease-in-out; */
 }
 
-
 .card {
   /* height: 100px; */
-  background: linear-gradient(45deg, #89E3E3, #ACB0BC);
+  background: linear-gradient(45deg, #89e3e3, #acb0bc);
 }
 a {
   font-weight: 900;
