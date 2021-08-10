@@ -564,6 +564,7 @@ a {
   background-color: #f5f7fa !important;
 }
 .more-font{
+  color: black !important;
   font-size: 17px !important;
   font-weight: 600 !important;
   font-family:sans-serif !important;

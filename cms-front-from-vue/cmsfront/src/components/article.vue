@@ -19,13 +19,13 @@
           v-if="item.aImageUrl"
           :src="`http://cmsapi.ssffyy.com:8090/` + item.aImageUrl"
           alt=""
-          style="float: left; width: 300px; height: 230px; border-radius: 1%;"
+          style="float: left; width: 300px; height: 230px; border-radius: 1%"
         />
         <br />
 
         <h1>
           <router-link :to="{ path: `articleDetail/?articleId=${item.id}` }">
-            <span>{{ item.aTitle }}</span>
+            <span  class="articleTitles">{{ item.aTitle }}</span>
           </router-link>
         </h1>
         <br />
@@ -33,7 +33,8 @@
         <br />
         <div style="display: flex">
           <p style="width: 20%">
-            <span style="font-weight: 600"></span>{{ item.nickName }}
+            <span class="articleText" style="font-weight: 600"></span
+            >{{ item.nickName }}
           </p>
           <p style="width: 25%">
             <img src="../Images/bx-calendar-alt.png" alt="" />
@@ -243,6 +244,12 @@ h4 {
   font-size: 16px;
   font-weight: 500;
 }
+.articleTitles {
+  color: #222226 !important;
+  /* background-color: rgba(225, 225, 225 4);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px; */
+}
 .inDetail {
   width: 100%;
   height: auto;
@@ -305,5 +312,8 @@ h4 {
   /* display: flex; */
   /* align-items: center; */
   /* justify-content: space-between; */
+}
+router-link span {
+  color: #222226 !important;
 }
 </style>
