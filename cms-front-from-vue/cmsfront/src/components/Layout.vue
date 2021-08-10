@@ -1,6 +1,6 @@
 <template>
   <el-container class="top">
-    <el-container>
+    <el-container class="scroll">
       <Header></Header>
       <div class="main-top">
         <el-carousel
@@ -9,7 +9,7 @@
           arrow="never"
           height="900px"
         >
-          <el-carousel-item v-for="(item,index) in topImgUrls" :key="index">
+          <el-carousel-item v-for="(item, index) in topImgUrls" :key="index">
             <div class="topImg">
               <img :src="item.idView" alt="" class="topImgChild" />
             </div>
@@ -30,7 +30,10 @@
               <el-card class="asidecard">
                 <div class="block">
                   <el-carousel height="200px">
-                    <el-carousel-item v-for="(item,index) in imgUrls" :key="index.id">
+                    <el-carousel-item
+                      v-for="(item, index) in imgUrls"
+                      :key="index.id"
+                    >
                       <h3 class="small">
                         <img :src="path + item.aImageUrl" alt="" />
                       </h3>
@@ -554,7 +557,7 @@ a {
   box-shadow: none !important;
   background-color: #f5f7fa !important;
 }
-.asidecard{
+.asidecard {
   margin-top: 5px;
 }
 .asidecard__body {
@@ -563,11 +566,21 @@ a {
   box-shadow: none !important;
   background-color: #f5f7fa !important;
 }
-.more-font{
+.more-font {
   color: black !important;
   font-size: 17px !important;
   font-weight: 600 !important;
-  font-family:sans-serif !important;
+  font-family: sans-serif !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+}
+/* 滚动条的滑块 */
+::-webkit-scrollbar-thumb {
+  background-color: #00d2f7;
+  border-radius: 3px;
 }
 /* .transition-box {
     margin-bottom: 10px;
