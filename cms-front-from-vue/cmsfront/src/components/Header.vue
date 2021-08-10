@@ -1013,7 +1013,7 @@ header {
 }
 header.sticky {
   padding: 5px 100px;
-  background: #c7ecee;
+  background: #dffcfd;
 }
 header .logo {
   position: relative;

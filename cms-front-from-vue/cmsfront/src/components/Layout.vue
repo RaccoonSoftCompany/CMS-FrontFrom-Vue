@@ -1,6 +1,6 @@
 <template>
   <el-container class="top">
-    <div>
+    <el-container>
       <Header></Header>
       <div class="main-top">
         <el-carousel
@@ -171,7 +171,7 @@
           Copyright © 2021 - 2021 Raccoon. All Rights Reserved.
         </el-footer>
       </div>
-    </div>
+    </el-container>
   </el-container>
 </template>
 
@@ -257,9 +257,8 @@ export default {
 </script>
 
 <style>
-* {
-}
 body {
+  
   margin: 0;
   background-color: #f5f7fa !important;
 }
@@ -273,12 +272,8 @@ body {
   padding-top: 10px;
   display: inline-block;
 }
-.top {
-  width: 100%;
-  height: 100%;
-  /* overflow-x: hidden; */
-  position: fixed;
-  display: flex;
+.top{
+  overflow-x: hidden;
 }
 .topImg {
   width: 100%;
@@ -287,6 +282,7 @@ body {
   background-size: cover;
 }
 .topCar {
+  
   /* overflow-x: hidden; */
   /* margin-left: 5px; */
   width: 100%;
@@ -303,7 +299,7 @@ body {
   font-family: sans-serif;
   font-style: normal;
   text-transform: none;
-  background-color: #c7ecee;
+  background-color: #dffcfd;
   box-shadow: 5px -2px 5px rgb(202, 207, 207);
   color: #bbbbbb;
   text-align: center;

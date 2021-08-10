@@ -123,7 +123,7 @@ export default {
 
 .card {
   /* height: 100px; */
-  background: linear-gradient(45deg, #989898, #567087);
+  background: linear-gradient(45deg, #89E3E3, #ACB0BC);
 }
 a {
   font-weight: 900;
