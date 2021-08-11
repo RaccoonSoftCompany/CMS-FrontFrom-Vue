@@ -48,7 +48,8 @@ export default {
   mounted(){
     getQRCode().then(res=>{
       console.log(res);
-      this.QRData = res.data
+      this.QRData = res.data;
+      this.QRCode = this.path + res.data[0].qrUrl
     })
   }
 };
