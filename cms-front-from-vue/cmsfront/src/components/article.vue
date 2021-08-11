@@ -8,6 +8,7 @@
       >
         <li v-for="i in count" key="i.id" class="list-item">{{ i }}</li>
       </ul> -->
+      <div class="demo-image">
       <el-card
         class="topCard"
         :inline="true"
@@ -15,11 +16,12 @@
         :key="item.value"
         style="margin-top: 1px"
       >
-        <img
+        <el-image
           v-if="item.aImageUrl"
           :src="`http://cmsapi.ssffyy.com:8090/` + item.aImageUrl"
+          fit="cover"
           alt=""
-          style="float: left; width: 300px; height: 230px; border-radius: 1%"
+          style="float: left; width: 250px; height: 250px; border-radius: 1%"
         />
         <br />
 
@@ -57,6 +59,7 @@
           </p>
         </div>
       </el-card>
+      </div>
       <!-- <p v-if="loading">加载中...</p>
       <p v-if="noMore">没有更多了</p> -->
     </div>
