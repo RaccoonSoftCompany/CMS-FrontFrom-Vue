@@ -29,16 +29,9 @@
             <aside>
               <el-card class="asidecard">
                 <div class="block">
-                  <el-carousel height="200px">
-                    <el-carousel-item
-                      v-for="(item, index) in imgUrls"
-                      :key="index.id"
-                    >
-                      <h3 class="small">
-                        <img :src="path + item.aImageUrl" alt="" />
-                      </h3>
-                    </el-carousel-item>
-                  </el-carousel>
+                  <img src="../../src/assets/黑衣人.webp" width="500px" height="280px"/>
+                    
+                  
                 </div>
                 <el-card class="rightSide">
                   <h3>
@@ -210,7 +203,7 @@
               <el-card class="cultural">
                 <span style="color: #808080; font-size: 14px">
                   <a href="https://beian.miit.gov.cn/#/Integrated/index"
-                    >闽ICP备398846号{{this.webInfo.icpCase}}</a
+                    >{{this.webInfo.icpCase}}</a
                   ></span
                 ><br />
                 <span style="color: #808080;font-size:14px;float;left"
@@ -223,7 +216,7 @@
                     alt=""
                   />
                   {{this.webInfo.pSecurit}}
-                  公安备案号1001011344</span
+                  </span
                 >
               </el-card>
             </aside>
@@ -238,7 +231,7 @@
 
         <el-footer>
           {{this.webInfo.copyright}}
-          <!-- Copyright © 2021 - 2021 Raccoon. All Rights Reserved. -->
+          
         </el-footer>
       </div>
     </el-container>

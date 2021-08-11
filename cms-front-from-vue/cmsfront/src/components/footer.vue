@@ -36,7 +36,22 @@
 </template>
 
 <script>
-export default {};
+import {getQRCode} from '../api/webInfo'
+export default {
+  data(){
+    return{
+      QRData:[],
+      path:"http://cmsapi.ssffyy.com:8090/",
+      QRCode:"",
+    }
+  },
+  mounted(){
+    getQRCode().then(res=>{
+      console.log(res);
+      this.QRData = res.data
+    })
+  }
+};
 </script>
 
 <style scoped>

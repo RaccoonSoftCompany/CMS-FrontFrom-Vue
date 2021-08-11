@@ -4,7 +4,6 @@
       <a class="logo" href="article">
         <img src="../Images/银河护卫队-浣熊火箭48.jpg" />
         {{this.webInfo.webName}}
-        Raccoon
       </a>
       <ul>
         <!-- <el-buttom @click="bat">打到</el-buttom> -->
