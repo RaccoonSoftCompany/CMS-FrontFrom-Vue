@@ -258,7 +258,7 @@ export default {
   },
   data() {
     return {
-      path: "http://localhost:5000/",
+      path: "http://cmsapi.ssffyy.com:8090/",
       articleList: {},
       articleRead: {},
       praiseList: {},
