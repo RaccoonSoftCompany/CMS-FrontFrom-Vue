@@ -3,6 +3,7 @@
     <header>
       <a class="logo" href="article">
         <img src="../Images/银河护卫队-浣熊火箭48.jpg" />
+        {{this.webInfo.webName}}
         Raccoon
       </a>
       <ul>
@@ -441,6 +442,7 @@ import {
   getUserInfos,
   // loginToken,
 } from "../api/user";
+import { getWebInfo } from '../api/webInfo';
 // import Cookies from "js-cookie";
 export default {
   data() {
@@ -448,6 +450,7 @@ export default {
       path: "http://cmsapi.ssffyy.com:8090/",
       avaterImg: "",
       fileList: [],
+      webInfo:[],
       values: "",
       Username: "",
       nickName: "",
@@ -955,6 +958,10 @@ export default {
       this.options = res.data;
       console.log(this.options);
     });
+    getWebInfo().then(res=>{
+      this.webInfo = res.data[0]
+      console.log(res);
+    })
   },
   computed: {
     showUsername() {

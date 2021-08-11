@@ -210,7 +210,7 @@
               <el-card class="cultural">
                 <span style="color: #808080; font-size: 14px">
                   <a href="https://beian.miit.gov.cn/#/Integrated/index"
-                    >闽ICP备398846号</a
+                    >闽ICP备398846号{{this.webInfo.icpCase}}</a
                   ></span
                 ><br />
                 <span style="color: #808080;font-size:14px;float;left"
@@ -222,6 +222,7 @@
                     style="width: 16px; height: 16px"
                     alt=""
                   />
+                  {{this.webInfo.pSecurit}}
                   公安备案号1001011344</span
                 >
               </el-card>
@@ -236,7 +237,8 @@
         </div>
 
         <el-footer>
-          Copyright © 2021 - 2021 Raccoon. All Rights Reserved.
+          {{this.webInfo.copyright}}
+          <!-- Copyright © 2021 - 2021 Raccoon. All Rights Reserved. -->
         </el-footer>
       </div>
     </el-container>
@@ -251,6 +253,7 @@ import {
   TheTenTalkCount,
 } from "../api/article";
 import { getArticles } from "../api/user";
+import {getWebInfo} from '../api/webInfo'
 import Card from "./card.vue";
 import Header from "./Header";
 import Footer from "./footer.vue";
@@ -262,12 +265,13 @@ export default {
   },
   data() {
     return {
-      path: "http://cmsapi.ssffyy.com:8090/",
+      path: "http://localhost:5000/",
       articleList: {},
       articleRead: {},
       praiseList: {},
       commentList: {},
       moreReadData: {},
+      webInfo:[],
       morePraiseData: {},
       moreCommentData: {},
       imgUrls: [],
@@ -298,12 +302,14 @@ export default {
   mounted() {
     getArticles().then((res) => {
       this.imgUrls = res.data;
-      // console.log(res);
-    });
-    // $(".some-list").wrapper({
-    //   item: "div.item",
-    //   count: 5,
-    // });
+    
+    });  
+    // 获取站点信息
+    getWebInfo().then(res=>{
+      this.webInfo = res.data[0]
+      console.log(res);
+    })
+
     TheFirstReadCount().then((res) => {
       // console.log(res.data);
       if (res.data.length > 5) {

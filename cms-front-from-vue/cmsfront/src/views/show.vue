@@ -1,467 +1,125 @@
 <template>
   <div>
-    <div class="content">
-      <br>
-      <br />
-      <div class="grid">
-        <a class="grid__item" href="#preview-1">
-          <div class="box">
-            <div class="box__shadow"></div>
-            <img
-              class="box__img"
-              src="../components/aboutimg/bruse.png"
-              alt="Some image"
-            />
-            <h3 class="box__title">
-              <span class="box__title-inner" data-hover="Memo">Memo</span>
-            </h3>
-            <h4 class="box__text">
-              <span class="box__text-inner">Burse</span>
-            </h4>
-            <div class="box__deco">&#10014;</div>
-            <p class="box__content">
-              <br />
-              <span class="editor">在我这里没有什么不可能👊</span>
-            </p>
-          </div>
-        </a>
-        <a class="grid__item" href="#preview-2">
-          <div class="box">
-            <div class="box__shadow"></div>
-            <img
-              class="box__img"
-              src="../components/aboutimg/2.jpg"
-              alt="Some image"
-            />
-            <h3 class="box__title box__title--straight box__title--bottom">
-              <span class="box__title-inner" data-hover="Gun">Gun</span>
-            </h3>
-            <h4 class="box__text box__text--bottom">
-              <span class="box__text-inner box__text-inner--rotated1"
-                >Rain</span
-              >
-            </h4>
-            <div class="box__deco box__deco--top">&#10115;</div>
-          </div>
-        </a>
-        <a class="grid__item" href="#preview-3">
-          <div class="box">
-            <div class="box__shadow"></div>
-            <img
-              class="box__img"
-              src="../components/aboutimg/3.jpg"
-              alt="Some image"
-            />
-            <h3 class="box__title">
-              <span class="box__title-inner" data-hover="West">West</span>
-            </h3>
-            <h4 class="box__text box__text--topcloser">
-              <span class="box__text-inner">Green</span>
-            </h4>
-            <div class="box__deco">&#10032;</div>
-          </div>
-        </a>
-        <a
-          class="grid__item grid__item--noclick"
-          href="http://go.thoughtleaders.io/253620180522"
-        >
-          <div class="box">
-            <div class="box__shadow"></div>
-            <img
-              class="box__img"
-              src="../components/aboutimg/12.jpg"
-              alt="Some image"
-            />
-            <h4 class="box__text">
-              <span
-                class="
-                  box__text-inner
-                  box__text-inner--rotated2
-                  box__text-inner--reverse
-                "
-                >Sponsor</span
-              >
-            </h4>
-            <p class="box__content">
-              <strong>monday.com</strong> offers simplified planning and
-              collaboration tools. Create customizable boards to track
-              everything your team is working on and keep all communication in
-              one place and never lose track again.
-              <strong>Create your free account</strong>
-            </p>
-          </div>
-        </a>
-        <a class="grid__item" href="#preview-4">
-          <div class="box">
-            <div class="box__shadow"></div>
-            <img
-              class="box__img"
-              src="../components/aboutimg/5.jpg"
-              alt="Some image"
-            />
-            <h3 class="box__title">
-              <span class="box__title-inner" data-hover="Catch">Catch</span>
-            </h3>
-            <h4 class="box__text box__text--bottom box__text--right">
-              <span class="box__text-inner box__text-inner--rotated3"
-                >Fire</span
-              >
-            </h4>
-          </div>
-        </a>
-        <a class="grid__item" href="#preview-5">
-          <div class="box">
-            <div class="box__shadow"></div>
-            <img
-              class="box__img"
-              src="../components/aboutimg/6.jpg"
-              alt="Some image"
-            />
-            <h3 class="box__title">
-              <span class="box__title-inner" data-hover="Lim">Lim</span>
-            </h3>
-            <h4 class="box__text box__text--bottomcloser">
-              <span class="box__text-inner">Breed</span>
-            </h4>
-          </div>
-        </a>
-        <a class="grid__item" href="#preview-6">
-          <div class="box">
-            <div class="box__shadow"></div>
-            <img
-              class="box__img"
-              src="../components/aboutimg/7.jpg"
-              alt="Some image"
-            />
-            <h3 class="box__title">
-              <span class="box__title-inner" data-hover="Hard">Hard</span>
-            </h3>
-            <h4 class="box__text"><span class="box__text-inner">Fast</span></h4>
-            <p class="box__content">
-              "Love stronger, stranger! Love stronger."
-            </p>
-          </div>
-        </a>
-        <a class="grid__item" href="#preview-7">
-          <div class="box">
-            <div class="box__shadow"></div>
-            <img
-              class="box__img"
-              src="../components/aboutimg/8.jpg"
-              alt="Some image"
-            />
-            <h3 class="box__title box__title--straight box__title--bottom">
-              <span class="box__title-inner" data-hover="Red">Red</span>
-            </h3>
-            <h4 class="box__text box__title--bottom">
-              <span class="box__text-inner box__text-inner--rotated1"
-                >Life</span
-              >
-            </h4>
-          </div>
-        </a>
-        <a class="grid__item" href="#preview-8">
-          <div class="box">
-            <div class="box__shadow"></div>
-            <img
-              class="box__img"
-              src="../components/aboutimg/4.jpg"
-              alt="Some image"
-            />
-            <h3 class="box__title">
-              <span class="box__title-inner" data-hover="Jack">Jack</span>
-            </h3>
-            <h4 class="box__text box__text--bottom">
-              <span class="box__text-inner">Bust</span>
-            </h4>
-            <div class="box__deco">&#10108;</div>
-          </div>
-        </a>
-        <a class="grid__item" href="#preview-9">
-          <div class="box">
-            <div class="box__shadow"></div>
-            <img
-              class="box__img"
-              src="../components/aboutimg/10.jpg"
-              alt="Some image"
-            />
-            <h3 class="box__title">
-              <span class="box__title-inner" data-hover="Wild">Wild</span>
-            </h3>
-            <h4 class="box__text box__text--bottom">
-              <span class="box__text-inner">Zack</span>
-            </h4>
-          </div>
-        </a>
-        <a class="grid__item" href="#preview-10">
-          <div class="box">
-            <div class="box__shadow"></div>
-            <img
-              class="box__img"
-              src="../components/aboutimg/11.jpg"
-              alt="Some image"
-            />
-            <h3 class="box__title box__title--bottom">
-              <span class="box__title-inner" data-hover="Lost">Lost</span>
-            </h3>
-            <h4 class="box__text">
-              <span class="box__text-inner box__text-inner--rotated2"
-                >Rust</span
-              >
-            </h4>
-            <p class="box__content">
-              "Call it a hurricane or call it freedom, Frank"
-            </p>
-          </div>
-        </a>
-        <a class="grid__item" href="#preview-11">
-          <div class="box">
-            <div class="box__shadow"></div>
-            <img
-              class="box__img"
-              src="../components/aboutimg/12.jpg"
-              alt="Some image"
-            />
-            <h3 class="box__title box__title--straight box__title--left">
-              <span class="box__title-inner" data-hover="Grit">Grit</span>
-            </h3>
-            <h4 class="box__text box__text--bottom box__text--right">
-              <span class="box__text-inner box__text-inner--rotated3">Mud</span>
-            </h4>
-            <div class="box__deco box__deco--top">&#10153;</div>
-          </div>
-        </a>
+    <!-- 首图 -->
+    <div class="single-member effect-2">
+      <div class="member-image">
+        <img src="../components/img/国乒2.jpg" alt="Member" />
+      </div>
+      <div class="member-info">
+        <h3>国乒</h3>
+        <h5>国乒长盛不衰，只因总有“青春”长出来</h5>
+        <p>
+          孙颖莎：击败老对手
+          <br />
+          陈梦：一步一步迎来“梦”时代
+          <br />
+          王曼昱：做好自己该做的事时刻准备着
+        </p>
       </div>
     </div>
-    <div class="overlay">
-      <div class="overlay__reveal"></div>
-      <div class="overlay__item" id="preview-1">
-        <div class="box">
-          <div class="box__shadow"></div>
-          <img
-            class="box__img box__img--original"
-            src="img/original/1.jpg"
-            alt="Some image"
-          />
-          <h3 class="box__title"><span class="box__title-inner">Memo</span></h3>
-          <h4 class="box__text"><span class="box__text-inner">Beast</span></h4>
-          <div class="box__deco">&#10014;</div>
-        </div>
-        <p class="overlay__content">
-          It's time the tale were told of how you took a child and you made him
-          old.
+    <!-- 第二张 -->
+    <div class="single-member effect-3">
+      <div class="member-image">
+        <img src="../components/img/百米短跑1.png" alt="Member" />
+      </div>
+      <div class="member-info">
+        <h3 style="margin-top: 40px">苏炳添</h3>
+        <h5></h5>
+        <p>
+          9 秒 83！东京奥运会男子 100 米半决赛上，
+          中国选手苏炳添创造了一个属于黄种人，属于整个亚洲的神迹！ 苏炳添的 9.83
+          秒是人类第 4 好的成绩，
         </p>
       </div>
-      <div class="overlay__item" id="preview-2">
-        <div class="box">
-          <div class="box__shadow"></div>
-          <img
-            class="box__img box__img--original"
-            src="../components/aboutimg/original/2.jpg"
-            alt="Some image"
-          />
-          <h3 class="box__title box__title--straight box__title--bottom">
-            <span class="box__title-inner">Gun</span>
-          </h3>
-          <h4 class="box__text box__text--bottom">
-            <span class="box__text-inner box__text-inner--rotated1">Rain</span>
-          </h4>
-          <div class="box__deco box__deco--top">&#10115;</div>
-        </div>
-        <p class="overlay__content">
-          It's time the tale were told of how you took a child and you made him
-          old.
+    </div>
+    <!-- 第三张 -->
+    <div class="single-member effect-4">
+      <div class="more-info" >
+        <h3>杨倩</h3>
+        <h5>气枪公主</h5>
+      </div>
+      <div class="member-image">
+        <img src="../components/img/气枪2.jpg" alt="Member" />
+      </div>
+      <div class="more-info">
+        <p>
+          成功并非一蹴而就杨倩的成功再次提醒人们，一个人的人生选择至关重要，
+          坚持也是不可或缺的可贵品质。只有选择了正确的道路，坚定不移地走下去，收获成功一定指日可待！
         </p>
       </div>
-      <div class="overlay__item" id="preview-3">
-        <div class="box">
-          <div class="box__shadow"></div>
-          <img
-            class="box__img box__img--original"
-            src="../components/aboutimg/original/3.jpg"
-            alt="Some image"
-          />
-          <h3 class="box__title"><span class="box__title-inner">West</span></h3>
-          <h4 class="box__text box__text--topcloser">
-            <span class="box__text-inner">Green</span>
-          </h4>
-          <div class="box__deco">&#10032;</div>
+    </div>
+
+    <!-- 体操 -->
+    <div class="single-member effect-5" style="float: left">
+      <div class="member-image">
+        <img src="../components/img/体操2.jpg" alt="Member " />
+      </div>
+      <div class="member-info">
+        <h3>管晨辰</h3>
+        <br />
+        <h5>首战夺金</h5>
+
+        <p>
+          2012年成为浙江省体操队队员，国家健将，2017年进入国家体操队。2021年8月3日，在东京奥运会体操女子平衡木决赛中，管晨辰夺得金牌。
+        </p>
+        <div class="social-touch icon-colored">
+          <a class="fb-touch" href="# "></a>
+          <a class="tweet-touch" href="# "></a>
+          <a class="linkedin-touch" href="# "></a>
         </div>
-        <p class="overlay__content">
-          It's time the tale were told of how you took a child and you made him
-          old.
+      </div>
+    </div>
+    <!-- 跳水 -->
+    <div class="single-member effect-9" style="margin-top: -315px">
+      <div class="member-info">
+        <h3>全红婵，陈芋汐</h3>
+        <br />
+        <h5>中国小将</h5>
+      </div>
+      <br />
+      <div class="member-image">
+        <img src="../components/img/跳水2.jpg" alt="Member " />
+      </div>
+      <div class="more-info">
+        <p>
+          中国小将全红婵和陈芋汐包揽了女子10米跳台项目的金银牌。
+          全红婵在比赛过程中有三跳拿到了满分， 她的动作完成度之高令人惊叹，
+          最终全红婵五次动作拿到466.2分， 陈芋汐五次动作拿到425.4分。
         </p>
       </div>
-      <div class="overlay__item" id="preview-4">
-        <div class="box">
-          <div class="box__shadow"></div>
-          <img
-            class="box__img box__img--original"
-            src="../components/aboutimg/original/5.jpg"
-            alt="Some image"
-          />
-          <h3 class="box__title">
-            <span class="box__title-inner">Catch</span>
-          </h3>
-          <h4 class="box__text box__text--bottom box__text--right">
-            <span class="box__text-inner box__text-inner--rotated3">Fire</span>
-          </h4>
-        </div>
-        <p class="overlay__content">
-          It's time the tale were told of how you took a child and you made him
-          old.
-        </p>
+    </div>
+    <div class="single-member effect-7" style="margin-top: -315px">
+      <div class="member-info">
+        <h3>张家齐陈芋汐</h3>
+        <br />
+        <h5>俩"00后"完美发挥</h5>
       </div>
-      <div class="overlay__item" id="preview-5">
-        <div class="box">
-          <div class="box__shadow"></div>
-          <img
-            class="box__img box__img--original"
-            src="../components/aboutimg/original/6.jpg"
-            alt="Some image"
-          />
-          <h3 class="box__title"><span class="box__title-inner">Lim</span></h3>
-          <h4 class="box__text box__text--bottomcloser">
-            <span class="box__text-inner">Breed</span>
-          </h4>
-        </div>
-        <p class="overlay__content">
-          It's time the tale were told of how you took a child and you made him
-          old.
-        </p>
+      <br />
+      <div class="member-image">
+        <img src="../components/img/双人跳水2.jpg" alt="Member " />
       </div>
-      <div class="overlay__item" id="preview-6">
-        <div class="box">
-          <div class="box__shadow"></div>
-          <img
-            class="box__img box__img--original"
-            src="../components/aboutimg/original/7.jpg"
-            alt="Some image"
-          />
-          <h3 class="box__title"><span class="box__title-inner">Hard</span></h3>
-          <h4 class="box__text"><span class="box__text-inner">Fast</span></h4>
-        </div>
-        <p class="overlay__content">
-          It's time the tale were told of how you took a child and you made him
-          old.
+      <div class="more-info">
+        <p>
+          东京奥运会跳水女子双人10米跳台决赛，
+          张家齐/陈芋汐出战，拿到金牌，这是中国代表团第8金，
+          2019年张家齐曾与卢为搭档在国际泳联世锦赛中夺得女子双人10米跳台冠军，
+          陈芋汐则是2019年国际泳联世锦赛女子单人10米跳台冠军。
+          两人年纪轻轻，但已经是世界冠军
         </p>
-      </div>
-      <div class="overlay__item" id="preview-7">
-        <div class="box">
-          <div class="box__shadow"></div>
-          <img
-            class="box__img box__img--original"
-            src="../components/aboutimg/original/8.jpg"
-            alt="Some image"
-          />
-          <h3 class="box__title box__title--straight box__title--bottom">
-            <span class="box__title-inner">Red</span>
-          </h3>
-          <h4 class="box__text box__title--bottom">
-            <span class="box__text-inner box__text-inner--rotated1">Life</span>
-          </h4>
+        <div class="social-touch icon-colored">
+          <a class="fb-touch" href="# "></a>
+          <a class="tweet-touch" href="# "></a>
+          <a class="linkedin-touch" href="# "></a>
         </div>
-        <p class="overlay__content">
-          It's time the tale were told of how you took a child and you made him
-          old.
-        </p>
       </div>
-      <div class="overlay__item" id="preview-8">
-        <div class="box">
-          <div class="box__shadow"></div>
-          <img
-            class="box__img box__img--original"
-            src="../components/aboutimg/original/9.jpg"
-            alt="Some image"
-          />
-          <h3 class="box__title"><span class="box__title-inner">Jack</span></h3>
-          <h4 class="box__text box__text--bottom">
-            <span class="box__text-inner">Bust</span>
-          </h4>
-          <div class="box__deco">&#10108;</div>
-        </div>
-        <p class="overlay__content">
-          It's time the tale were told of how you took a child and you made him
-          old.
-        </p>
-      </div>
-      <div class="overlay__item" id="preview-9">
-        <div class="box">
-          <div class="box__shadow"></div>
-          <img
-            class="box__img box__img--original"
-            src="../components/aboutimg/original/10.jpg"
-            alt="Some image"
-          />
-          <h3 class="box__title"><span class="box__title-inner">Wild</span></h3>
-          <h4 class="box__text box__text--bottom">
-            <span class="box__text-inner">Zack</span>
-          </h4>
-        </div>
-        <p class="overlay__content">
-          It's time the tale were told of how you took a child and you made him
-          old.
-        </p>
-      </div>
-      <div class="overlay__item" id="preview-10">
-        <div class="box">
-          <div class="box__shadow"></div>
-          <img
-            class="box__img box__img--original"
-            src="../components/aboutimg/original/11.jpg"
-            alt="Some image"
-          />
-          <h3 class="box__title box__title--bottom">
-            <span class="box__title-inner">Lost</span>
-          </h3>
-          <h4 class="box__text">
-            <span class="box__text-inner box__text-inner--rotated2">Rust</span>
-          </h4>
-        </div>
-        <p class="overlay__content">
-          It's time the tale were told of how you took a child and you made him
-          old.
-        </p>
-      </div>
-      <div class="overlay__item" id="preview-11">
-        <div class="box">
-          <div class="box__shadow"></div>
-          <img
-            class="box__img box__img--original"
-            src="../components/aboutimg/original/12.jpg"
-            alt="Some image"
-          />
-          <h3 class="box__title box__title--straight box__title--left">
-            <span class="box__title-inner">Grit</span>
-          </h3>
-          <h4 class="box__text box__text--bottom box__text--right">
-            <span class="box__text-inner box__text-inner--rotated3">Mud</span>
-          </h4>
-          <div class="box__deco box__deco--top">&#10153;</div>
-        </div>
-        <p class="overlay__content">
-          It's time the tale were told of how you took a child and you made him
-          old.
-        </p>
-      </div>
-      <!-- <button class="overlay__close">
-        <svg class="icon icon--cross"><use xlink:href="#icon-cross"></use></svg>
-      </button> -->
     </div>
   </div>
 </template>
 
 <script>
-import "../components/aboutcss/base.css";
-import "../components/aboutjs/imagesloaded.pkgd.min.js";
-// import '../components/aboutjs/TweenMax.min.js';
+import "../components/css/show001.css";
 export default {};
 </script>
 
 <style>
-.editor {
-  font-size: 14px !important;
-  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
-  font-weight: 800;
-}
 </style>

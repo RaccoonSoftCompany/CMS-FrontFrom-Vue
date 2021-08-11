@@ -406,8 +406,8 @@ export default {
   border: none;
   box-shadow: none;
   /* height: 1000px; */
-  width: 100%;
-  overflow-y: auto;
+  width: 100% !important;
+  overflow-y: auto !important;
 }
 .articleAction {
   border: none;
