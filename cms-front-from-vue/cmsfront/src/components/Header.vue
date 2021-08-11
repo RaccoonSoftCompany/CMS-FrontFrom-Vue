@@ -715,10 +715,10 @@ export default {
             };
             // console.log(data);
             forgetPasswordtoUsername(data.UName).then((res) => {
-              // console.log(res);
+              console.log(res);
               this.getProblemId = res.data.uId;
               if (res.code === 1000) {
-                this.showUserMatter = this.Username;
+                this.showUserMatter = res.data.mName;
                 this.forgetDialogVisible = false;
                 this.enNameDialogVisible = true;
               } else {
