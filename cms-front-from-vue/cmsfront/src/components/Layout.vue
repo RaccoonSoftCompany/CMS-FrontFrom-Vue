@@ -354,7 +354,7 @@ export default {
 <style>
 body {
   margin: 0;
-  background-color: #f5f7fa !important;
+  background-color: #ffffff !important;
 }
 .wrapper {
   max-width: 100%;
@@ -442,8 +442,8 @@ a {
 /* main */
 .main {
   width: 100%;
-
   padding: 0;
+  min-height: 1200px;
   margin: auto 0;
   display: flex;
 }
@@ -499,6 +499,7 @@ a {
   margin-bottom: 20px;
 }
 .main-footer {
+  border-top: 1px solid #EBEBEB;
   padding: 0;
   margin: 0;
   height: 300px;
@@ -571,6 +572,10 @@ a {
   font-size: 17px !important;
   font-weight: 600 !important;
   font-family: sans-serif !important;
+}
+el-button{
+  box-shadow: none !important;
+  border: none !important;
 }
 
 ::-webkit-scrollbar {

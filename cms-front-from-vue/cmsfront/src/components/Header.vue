@@ -951,8 +951,9 @@ export default {
       header.classList.toggle("sticky", window.scrollY > 0);
     });
     getMatters().then((res) => {
-      this.options = res.data.data;
-      // console.log(res.data);
+      console.log(res);
+      this.options = res.data;
+      console.log(this.options);
     });
   },
   computed: {
