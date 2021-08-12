@@ -7,3 +7,7 @@ export function getWebInfo(){
 export function getQRCode(){
     return request.get('QRCode/1')
 }
+
+export function GetTrueWeb(){
+    return request.get('Web/GetTrueWeb')
+}

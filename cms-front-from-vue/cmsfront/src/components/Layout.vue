@@ -29,9 +29,11 @@
             <aside>
               <el-card class="asidecard">
                 <div class="block">
-                  <img src="../../src/assets/黑衣人.webp" width="500px" height="280px"/>
-                    
-                  
+                  <img
+                    src="../../src/assets/黑衣人.webp"
+                    width="500px"
+                    height="280px"
+                  />
                 </div>
                 <el-card class="rightSide">
                   <h3>
@@ -202,9 +204,9 @@
               </el-card>
               <el-card class="cultural">
                 <span style="color: #808080; font-size: 14px">
-                  <a href="https://beian.miit.gov.cn/#/Integrated/index"
-                    >{{this.webInfo.icpCase}}</a
-                  ></span
+                  <a href="https://beian.miit.gov.cn/#/Integrated/index">{{
+                    this.webInfo.icpCase
+                  }}</a></span
                 ><br />
                 <span style="color: #808080;font-size:14px;float;left"
                   >经验性网站备案信息</span
@@ -215,9 +217,8 @@
                     style="width: 16px; height: 16px"
                     alt=""
                   />
-                  {{this.webInfo.pSecurit}}
-                  </span
-                >
+                  {{ this.webInfo.pSecurit }}
+                </span>
               </el-card>
             </aside>
             <el-backtop>
@@ -230,8 +231,7 @@
         </div>
 
         <el-footer>
-          {{this.webInfo.copyright}}
-          
+          {{ this.webInfo.copyright }}
         </el-footer>
       </div>
     </el-container>
@@ -246,7 +246,7 @@ import {
   TheTenTalkCount,
 } from "../api/article";
 import { getArticles } from "../api/user";
-import {getWebInfo} from '../api/webInfo'
+import { GetTrueWeb } from "../api/webInfo";
 import Card from "./card.vue";
 import Header from "./Header";
 import Footer from "./footer.vue";
@@ -264,7 +264,7 @@ export default {
       praiseList: {},
       commentList: {},
       moreReadData: {},
-      webInfo:[],
+      webInfo: [],
       morePraiseData: {},
       moreCommentData: {},
       imgUrls: [],
@@ -295,14 +295,17 @@ export default {
   mounted() {
     getArticles().then((res) => {
       this.imgUrls = res.data;
-    
-    });  
+    });
     // 获取站点信息
-    getWebInfo().then(res=>{
-      this.webInfo = res.data[0]
+    // getWebInfo().then((res) => {
+    //   this.webInfo = res.data[0];
+    //   console.log(res);
+    // });
+    // 获取网站所有信息
+    GetTrueWeb().then((res) => {
+      this.webInfo = res.data;
       console.log(res);
-    })
-
+    });
     TheFirstReadCount().then((res) => {
       // console.log(res.data);
       if (res.data.length > 5) {
@@ -498,7 +501,7 @@ a {
   margin-bottom: 20px;
 }
 .main-footer {
-  border-top: 1px solid #EBEBEB;
+  border-top: 1px solid #ebebeb;
   padding: 0;
   margin: 0;
   height: 300px;
@@ -572,7 +575,7 @@ a {
   font-weight: 600 !important;
   font-family: sans-serif !important;
 }
-el-button{
+el-button {
   box-shadow: none !important;
   border: none !important;
 }
